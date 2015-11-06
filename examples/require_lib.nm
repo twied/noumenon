@@ -1,0 +1,6 @@
+println("b");
+
+return {
+    s : "foobar",
+    i : 42
+};

@@ -48,6 +48,10 @@ struct List : public FunctionValue {
     std::shared_ptr<Value> doCall(Program&, std::vector<std::shared_ptr<Value>>&);
 };
 
+struct Require : public FunctionValue {
+    std::shared_ptr<Value> doCall(Program&, std::vector<std::shared_ptr<Value>>&);
+};
+
 } /* namespace rtl */
 } /* namespace noumenon */
 

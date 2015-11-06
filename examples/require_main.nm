@@ -1,0 +1,5 @@
+println("a");
+
+var included = require("examples/require_lib.nm");
+
+println(included, " ", typeof(included));

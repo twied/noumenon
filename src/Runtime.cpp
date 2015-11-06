@@ -16,10 +16,11 @@
  * along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 
-#include <iostream>
-
 #include "Runtime.h"
 #include "Program.h"
+
+#include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -237,6 +238,40 @@ shared_ptr<Value> List::doCall(Program& program, vector<shared_ptr<Value>>&) {
         }
     }
     return NullValue::singleton;
+}
+
+shared_ptr<Value> Require::doCall(Program& program, vector<shared_ptr<Value>>& parameters) {
+    if (parameters.size() < 1) {
+        return NullValue::singleton;
+    }
+
+    struct Walker : public DefaultValueWalker {
+        Walker() : result(), valid(false) {
+        }
+
+        shared_ptr<Value> value(StringValue& node) {
+            valid = true;
+            result = node.value;
+            return nullptr;
+        }
+
+        string result;
+        bool valid;
+    } walker;
+
+    parameters[0]->walk(walker);
+    if (!walker.valid) {
+        return NullValue::singleton;
+    }
+
+    ifstream file(walker.result);
+    if (!file) {
+        return NullValue::singleton;
+
+    }
+
+    Program nestedProgram(program);
+    return Program::execute(nestedProgram, file);
 }
 
 } /* namespace rtl */

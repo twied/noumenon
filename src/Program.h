@@ -23,10 +23,14 @@
 #include "Statement.h"
 #include "Value.h"
 
+#include <iosfwd>
+
 namespace noumenon {
 
 class Program : public StatementWalker, public ExpressionWalker, public ObjectValue {
 public:
+    static std::shared_ptr<Value> execute(Program&, std::istream&);
+
     explicit Program(const bool&);
     explicit Program(Program& parent);
     ~Program();

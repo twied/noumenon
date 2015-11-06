@@ -27,6 +27,7 @@ Build-in functions
 * `println(argument, ...)`: Does the same as `print` -- but appends a newline.
 * `range(from, to)`: Creates an array with all integer values from `from` to `to`.
 * `length(argument)`: Returns the length of an array, number of mappings in an object, or null for all other values.
+* `require(filename)`: Executes the given file and return its returnvalue or `null` if no `return` statement was found.
 
 In interactive mode, there is one more function available:
 * `list()`: Lists all variables.
@@ -46,11 +47,6 @@ var dir = IO.dir(".");
 for(var subdir : dir.subdirs()) {
     println(subdir);
 }
-```
-* Including other scripts, similar to JavaScript:
-```
-var foo = require("bar.nm");
-foo.someFunction(42);
 ```
 * Native Code. Similar to "require", but being able to wrap a native library, i.e. ".so" or ".dll" files.
 * Access environment variables and comand line arguments
