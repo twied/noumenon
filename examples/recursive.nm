@@ -1,0 +1,25 @@
+/*
+ * Simple recursive functions.
+ *
+ * See: https://en.wikipedia.org/wiki/Fibonacci_number
+ * See: https://en.wikipedia.org/wiki/Factorial
+ */
+
+var fibonacci = function(n) {
+    if(n < 2) {
+        return 1;
+    }
+    
+    return fibonacci(n - 1) + fibonacci(n - 2);
+};
+
+var factorial = function(n) {
+    if (n < 1) {
+        return 1;
+    }
+    
+    return n * factorial(n - 1);
+};
+
+println("fibonacci(7) = ", fibonacci(7));
+println("factorial(7) = ", factorial(7));

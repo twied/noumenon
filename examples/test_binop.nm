@@ -1,0 +1,105 @@
+/*
+ * Test all binary operators against a selection of possible values and types.
+ */
+
+var values = [
+    // Null
+    null,
+
+    // Bool
+    true,
+    false,
+
+    // Int
+    0,
+    1,
+    2,
+    -7,
+    4294967296, /* max uint32 + 1 */
+
+    // Float
+    .0,
+    -7.0,
+    2.0000,
+    12345678e99,
+
+    // Array
+    [],
+    [1],
+    [1, 2.0, "three"],
+    [1, [2.0], "three"],
+
+    // String
+    "",
+    "foobar",
+    "three",
+    "Ňöüṁéŋøñ",
+
+    // Object
+    {},
+    {hello: "world", foobar: "raboof", answer: 42},
+    {hello: "world", array: ["raboof"], object: {some: "thing"}},
+
+    // Function
+    function() {},
+    function(one, two, three) {return (one + two) + three;}
+];
+
+var operators = [
+    "+",
+    "-",
+    "*",
+    "/",
+    "%",
+    "&&",
+    "||",
+    "==",
+    "!=",
+    "<",
+    "<=",
+    ">",
+    ">="
+];
+
+var printIfNotNull = function(operator, lhs, rhs, result) {
+    if (typeof(result) == "Null") {
+        return null;
+    }
+
+    println(lhs, "\t", typeof(lhs), "\t", operator, "\t", rhs, "\t", typeof(rhs), "\t=\t", result, "\t", typeof(result));
+};
+
+println("lhs\ttype\top\trhs\ttype\t=\tresult\ttype");
+for (var lhs : values) {
+    for (var rhs : values) {
+        for (var index, operator : operators) {
+            if(index == 0) {
+                printIfNotNull(operator, lhs, rhs, lhs + rhs);
+            } else if (index == 1) {
+                printIfNotNull(operator, lhs, rhs, lhs - rhs);
+            } else if (index == 2) {
+                printIfNotNull(operator, lhs, rhs, lhs * rhs);
+            } else if (index == 3) {
+                printIfNotNull(operator, lhs, rhs, lhs / rhs);
+            } else if (index == 4) {
+                printIfNotNull(operator, lhs, rhs, lhs % rhs);
+            } else if (index == 5) {
+                printIfNotNull(operator, lhs, rhs, lhs && rhs);
+            } else if (index == 6) {
+                printIfNotNull(operator, lhs, rhs, lhs || rhs);
+            } else if (index == 7) {
+                printIfNotNull(operator, lhs, rhs, lhs == rhs);
+            } else if (index == 8) {
+                printIfNotNull(operator, lhs, rhs, lhs != rhs);
+            } else if (index == 9) {
+                printIfNotNull(operator, lhs, rhs, lhs < rhs);
+            } else if (index == 10) {
+                printIfNotNull(operator, lhs, rhs, lhs <= rhs);
+            } else if (index == 11) {
+                printIfNotNull(operator, lhs, rhs, lhs > rhs);
+            } else if (index == 12) {
+                printIfNotNull(operator, lhs, rhs, lhs >= rhs);
+            }
+        }
+    }
+}

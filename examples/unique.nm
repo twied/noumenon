@@ -1,0 +1,27 @@
+/*
+ * Return all unique values of an array.
+ */
+
+var contains = function(array, element) {
+    for (var value : array) {
+        if (element == value) {
+            return true;
+        }
+    }
+    
+    return false;
+};
+
+var distinct = function(array) {
+    var output = [];
+
+    for (var value : array) {
+        if (!contains(output, value)) {
+            output = output + value;
+        }
+    }
+    
+    return output;
+};
+
+println(distinct([1, 3, 5, 3, 7, 3, 1, 1, 5]));

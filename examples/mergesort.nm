@@ -1,0 +1,49 @@
+/*
+ * https://en.wikipedia.org/wiki/Merge_sort
+ */
+
+var mergesort = function(array) {
+    /* base case */
+    if (length(array) <= 1) {
+        return array;
+    }
+
+    /* split up */
+    var left = [];
+    var right = [];
+    for (var index, value : array) {
+        if (index < length(array) / 2) {
+            left = left + value;
+        } else {
+            right = right + value;
+        }
+    }
+
+    /* sort halves */
+    left = mergesort(left);
+    right = mergesort(right);
+
+    /* join */
+    var result = [];
+    while ((length(left) > 0) && (length(right) > 0)) {
+        if (left[0] < right[0]) {
+            result = result + left[0];
+            left = left - left[0];
+        } else {
+            result = result + right[0];
+            right = right - right[0];
+        }
+    }
+    while (length(left) > 0) {
+        result = result + left[0];
+        left = left - left[0];
+    }
+    while (length(right) > 0) {
+        result = result + right[0];
+        right = right - right[0];
+    }
+
+    return result;
+};
+
+println(mergesort([7, 3, 1, 5, 9, 2, 4, 8, 6, 0]));

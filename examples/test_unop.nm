@@ -1,0 +1,70 @@
+/*
+ * Test all unary operators against a selection of possible values and types.
+ */
+
+var values = [
+    // Null
+    null,
+    
+    // Bool
+    true,
+    false,
+    
+    // Int
+    0,
+    1,
+    2,
+    -7,
+    4294967296, /* max uint32 + 1 */
+
+    // Float
+    .0,
+    -7.0,
+    2.0000,
+    12345678e99,
+
+    // Array
+    [],
+    [1],
+    [1, 2.0, "three"],
+    [1, [2.0], "three"],
+
+    // String
+    "",
+    "foobar",
+    "three",
+    "Ňöüṁéŋøñ",
+    
+    // Object
+    {},
+    {hello: "world", foobar: "raboof", answer: 42},
+    {hello: "world", array: ["raboof"], object: {some: "thing"}},
+
+    // Function
+    function() {},
+    function(one, two, three) {return (one + two) + three;}
+];
+
+var operators = [
+    "-",
+    "!"
+];
+
+var printIfNotNull = function(operator, value, result) {
+    if (typeof(result) == "Null") {
+        return null;
+    }
+
+    println(operator, "\t", value, "\t", typeof(value), "\t=\t", result, "\t", typeof(result));
+};
+
+println("op\tvalue\ttype\t=\tresult\ttype");
+for (var value : values) {
+    for (var index, operator : operators) {
+        if (index == 0) {
+            printIfNotNull(operator, value, -value);
+        } else {
+            printIfNotNull(operator, value, !value);
+        }
+    }
+}

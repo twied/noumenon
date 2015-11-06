@@ -1,0 +1,1129 @@
+lhs	type	op	rhs	type	=	result	type
+true	Bool	&&	true	Bool	=	true	Bool
+true	Bool	||	true	Bool	=	true	Bool
+true	Bool	==	true	Bool	=	true	Bool
+true	Bool	!=	true	Bool	=	false	Bool
+true	Bool	&&	false	Bool	=	false	Bool
+true	Bool	||	false	Bool	=	true	Bool
+true	Bool	==	false	Bool	=	false	Bool
+true	Bool	!=	false	Bool	=	true	Bool
+false	Bool	&&	true	Bool	=	false	Bool
+false	Bool	||	true	Bool	=	true	Bool
+false	Bool	==	true	Bool	=	false	Bool
+false	Bool	!=	true	Bool	=	true	Bool
+false	Bool	&&	false	Bool	=	false	Bool
+false	Bool	||	false	Bool	=	false	Bool
+false	Bool	==	false	Bool	=	true	Bool
+false	Bool	!=	false	Bool	=	false	Bool
+0	Int	+	0	Int	=	0	Int
+0	Int	-	0	Int	=	0	Int
+0	Int	*	0	Int	=	0	Int
+0	Int	==	0	Int	=	true	Bool
+0	Int	!=	0	Int	=	false	Bool
+0	Int	<	0	Int	=	false	Bool
+0	Int	<=	0	Int	=	true	Bool
+0	Int	>	0	Int	=	false	Bool
+0	Int	>=	0	Int	=	true	Bool
+0	Int	+	1	Int	=	1	Int
+0	Int	-	1	Int	=	-1	Int
+0	Int	*	1	Int	=	0	Int
+0	Int	/	1	Int	=	0	Int
+0	Int	%	1	Int	=	0	Int
+0	Int	==	1	Int	=	false	Bool
+0	Int	!=	1	Int	=	true	Bool
+0	Int	<	1	Int	=	true	Bool
+0	Int	<=	1	Int	=	true	Bool
+0	Int	>	1	Int	=	false	Bool
+0	Int	>=	1	Int	=	false	Bool
+0	Int	+	2	Int	=	2	Int
+0	Int	-	2	Int	=	-2	Int
+0	Int	*	2	Int	=	0	Int
+0	Int	/	2	Int	=	0	Int
+0	Int	%	2	Int	=	0	Int
+0	Int	==	2	Int	=	false	Bool
+0	Int	!=	2	Int	=	true	Bool
+0	Int	<	2	Int	=	true	Bool
+0	Int	<=	2	Int	=	true	Bool
+0	Int	>	2	Int	=	false	Bool
+0	Int	>=	2	Int	=	false	Bool
+0	Int	+	-7	Int	=	-7	Int
+0	Int	-	-7	Int	=	7	Int
+0	Int	*	-7	Int	=	0	Int
+0	Int	/	-7	Int	=	0	Int
+0	Int	%	-7	Int	=	0	Int
+0	Int	==	-7	Int	=	false	Bool
+0	Int	!=	-7	Int	=	true	Bool
+0	Int	<	-7	Int	=	false	Bool
+0	Int	<=	-7	Int	=	false	Bool
+0	Int	>	-7	Int	=	true	Bool
+0	Int	>=	-7	Int	=	true	Bool
+0	Int	+	4294967296	Int	=	4294967296	Int
+0	Int	-	4294967296	Int	=	-4294967296	Int
+0	Int	*	4294967296	Int	=	0	Int
+0	Int	/	4294967296	Int	=	0	Int
+0	Int	%	4294967296	Int	=	0	Int
+0	Int	==	4294967296	Int	=	false	Bool
+0	Int	!=	4294967296	Int	=	true	Bool
+0	Int	<	4294967296	Int	=	true	Bool
+0	Int	<=	4294967296	Int	=	true	Bool
+0	Int	>	4294967296	Int	=	false	Bool
+0	Int	>=	4294967296	Int	=	false	Bool
+0	Int	+	0	Float	=	0	Float
+0	Int	-	0	Float	=	0	Float
+0	Int	*	0	Float	=	0	Float
+0	Int	<	0	Float	=	false	Bool
+0	Int	<=	0	Float	=	true	Bool
+0	Int	>	0	Float	=	false	Bool
+0	Int	>=	0	Float	=	true	Bool
+0	Int	+	-7	Float	=	-7	Float
+0	Int	-	-7	Float	=	7	Float
+0	Int	*	-7	Float	=	-0	Float
+0	Int	/	-7	Float	=	-0	Float
+0	Int	<	-7	Float	=	false	Bool
+0	Int	<=	-7	Float	=	false	Bool
+0	Int	>	-7	Float	=	true	Bool
+0	Int	>=	-7	Float	=	true	Bool
+0	Int	+	2	Float	=	2	Float
+0	Int	-	2	Float	=	-2	Float
+0	Int	*	2	Float	=	0	Float
+0	Int	/	2	Float	=	0	Float
+0	Int	<	2	Float	=	true	Bool
+0	Int	<=	2	Float	=	true	Bool
+0	Int	>	2	Float	=	false	Bool
+0	Int	>=	2	Float	=	false	Bool
+0	Int	+	1.23457e+106	Float	=	1.23457e+106	Float
+0	Int	-	1.23457e+106	Float	=	-1.23457e+106	Float
+0	Int	*	1.23457e+106	Float	=	0	Float
+0	Int	/	1.23457e+106	Float	=	0	Float
+0	Int	<	1.23457e+106	Float	=	true	Bool
+0	Int	<=	1.23457e+106	Float	=	true	Bool
+0	Int	>	1.23457e+106	Float	=	false	Bool
+0	Int	>=	1.23457e+106	Float	=	false	Bool
+1	Int	+	0	Int	=	1	Int
+1	Int	-	0	Int	=	1	Int
+1	Int	*	0	Int	=	0	Int
+1	Int	==	0	Int	=	false	Bool
+1	Int	!=	0	Int	=	true	Bool
+1	Int	<	0	Int	=	false	Bool
+1	Int	<=	0	Int	=	false	Bool
+1	Int	>	0	Int	=	true	Bool
+1	Int	>=	0	Int	=	true	Bool
+1	Int	+	1	Int	=	2	Int
+1	Int	-	1	Int	=	0	Int
+1	Int	*	1	Int	=	1	Int
+1	Int	/	1	Int	=	1	Int
+1	Int	%	1	Int	=	0	Int
+1	Int	==	1	Int	=	true	Bool
+1	Int	!=	1	Int	=	false	Bool
+1	Int	<	1	Int	=	false	Bool
+1	Int	<=	1	Int	=	true	Bool
+1	Int	>	1	Int	=	false	Bool
+1	Int	>=	1	Int	=	true	Bool
+1	Int	+	2	Int	=	3	Int
+1	Int	-	2	Int	=	-1	Int
+1	Int	*	2	Int	=	2	Int
+1	Int	/	2	Int	=	0	Int
+1	Int	%	2	Int	=	1	Int
+1	Int	==	2	Int	=	false	Bool
+1	Int	!=	2	Int	=	true	Bool
+1	Int	<	2	Int	=	true	Bool
+1	Int	<=	2	Int	=	true	Bool
+1	Int	>	2	Int	=	false	Bool
+1	Int	>=	2	Int	=	false	Bool
+1	Int	+	-7	Int	=	-6	Int
+1	Int	-	-7	Int	=	8	Int
+1	Int	*	-7	Int	=	-7	Int
+1	Int	/	-7	Int	=	0	Int
+1	Int	%	-7	Int	=	1	Int
+1	Int	==	-7	Int	=	false	Bool
+1	Int	!=	-7	Int	=	true	Bool
+1	Int	<	-7	Int	=	false	Bool
+1	Int	<=	-7	Int	=	false	Bool
+1	Int	>	-7	Int	=	true	Bool
+1	Int	>=	-7	Int	=	true	Bool
+1	Int	+	4294967296	Int	=	4294967297	Int
+1	Int	-	4294967296	Int	=	-4294967295	Int
+1	Int	*	4294967296	Int	=	4294967296	Int
+1	Int	/	4294967296	Int	=	0	Int
+1	Int	%	4294967296	Int	=	1	Int
+1	Int	==	4294967296	Int	=	false	Bool
+1	Int	!=	4294967296	Int	=	true	Bool
+1	Int	<	4294967296	Int	=	true	Bool
+1	Int	<=	4294967296	Int	=	true	Bool
+1	Int	>	4294967296	Int	=	false	Bool
+1	Int	>=	4294967296	Int	=	false	Bool
+1	Int	+	0	Float	=	1	Float
+1	Int	-	0	Float	=	1	Float
+1	Int	*	0	Float	=	0	Float
+1	Int	<	0	Float	=	false	Bool
+1	Int	<=	0	Float	=	false	Bool
+1	Int	>	0	Float	=	true	Bool
+1	Int	>=	0	Float	=	true	Bool
+1	Int	+	-7	Float	=	-6	Float
+1	Int	-	-7	Float	=	8	Float
+1	Int	*	-7	Float	=	-7	Float
+1	Int	/	-7	Float	=	-0.142857	Float
+1	Int	<	-7	Float	=	false	Bool
+1	Int	<=	-7	Float	=	false	Bool
+1	Int	>	-7	Float	=	true	Bool
+1	Int	>=	-7	Float	=	true	Bool
+1	Int	+	2	Float	=	3	Float
+1	Int	-	2	Float	=	-1	Float
+1	Int	*	2	Float	=	2	Float
+1	Int	/	2	Float	=	0.5	Float
+1	Int	<	2	Float	=	true	Bool
+1	Int	<=	2	Float	=	true	Bool
+1	Int	>	2	Float	=	false	Bool
+1	Int	>=	2	Float	=	false	Bool
+1	Int	+	1.23457e+106	Float	=	1.23457e+106	Float
+1	Int	-	1.23457e+106	Float	=	-1.23457e+106	Float
+1	Int	*	1.23457e+106	Float	=	1.23457e+106	Float
+1	Int	/	1.23457e+106	Float	=	8.1e-107	Float
+1	Int	<	1.23457e+106	Float	=	true	Bool
+1	Int	<=	1.23457e+106	Float	=	true	Bool
+1	Int	>	1.23457e+106	Float	=	false	Bool
+1	Int	>=	1.23457e+106	Float	=	false	Bool
+2	Int	+	0	Int	=	2	Int
+2	Int	-	0	Int	=	2	Int
+2	Int	*	0	Int	=	0	Int
+2	Int	==	0	Int	=	false	Bool
+2	Int	!=	0	Int	=	true	Bool
+2	Int	<	0	Int	=	false	Bool
+2	Int	<=	0	Int	=	false	Bool
+2	Int	>	0	Int	=	true	Bool
+2	Int	>=	0	Int	=	true	Bool
+2	Int	+	1	Int	=	3	Int
+2	Int	-	1	Int	=	1	Int
+2	Int	*	1	Int	=	2	Int
+2	Int	/	1	Int	=	2	Int
+2	Int	%	1	Int	=	0	Int
+2	Int	==	1	Int	=	false	Bool
+2	Int	!=	1	Int	=	true	Bool
+2	Int	<	1	Int	=	false	Bool
+2	Int	<=	1	Int	=	false	Bool
+2	Int	>	1	Int	=	true	Bool
+2	Int	>=	1	Int	=	true	Bool
+2	Int	+	2	Int	=	4	Int
+2	Int	-	2	Int	=	0	Int
+2	Int	*	2	Int	=	4	Int
+2	Int	/	2	Int	=	1	Int
+2	Int	%	2	Int	=	0	Int
+2	Int	==	2	Int	=	true	Bool
+2	Int	!=	2	Int	=	false	Bool
+2	Int	<	2	Int	=	false	Bool
+2	Int	<=	2	Int	=	true	Bool
+2	Int	>	2	Int	=	false	Bool
+2	Int	>=	2	Int	=	true	Bool
+2	Int	+	-7	Int	=	-5	Int
+2	Int	-	-7	Int	=	9	Int
+2	Int	*	-7	Int	=	-14	Int
+2	Int	/	-7	Int	=	0	Int
+2	Int	%	-7	Int	=	2	Int
+2	Int	==	-7	Int	=	false	Bool
+2	Int	!=	-7	Int	=	true	Bool
+2	Int	<	-7	Int	=	false	Bool
+2	Int	<=	-7	Int	=	false	Bool
+2	Int	>	-7	Int	=	true	Bool
+2	Int	>=	-7	Int	=	true	Bool
+2	Int	+	4294967296	Int	=	4294967298	Int
+2	Int	-	4294967296	Int	=	-4294967294	Int
+2	Int	*	4294967296	Int	=	8589934592	Int
+2	Int	/	4294967296	Int	=	0	Int
+2	Int	%	4294967296	Int	=	2	Int
+2	Int	==	4294967296	Int	=	false	Bool
+2	Int	!=	4294967296	Int	=	true	Bool
+2	Int	<	4294967296	Int	=	true	Bool
+2	Int	<=	4294967296	Int	=	true	Bool
+2	Int	>	4294967296	Int	=	false	Bool
+2	Int	>=	4294967296	Int	=	false	Bool
+2	Int	+	0	Float	=	2	Float
+2	Int	-	0	Float	=	2	Float
+2	Int	*	0	Float	=	0	Float
+2	Int	<	0	Float	=	false	Bool
+2	Int	<=	0	Float	=	false	Bool
+2	Int	>	0	Float	=	true	Bool
+2	Int	>=	0	Float	=	true	Bool
+2	Int	+	-7	Float	=	-5	Float
+2	Int	-	-7	Float	=	9	Float
+2	Int	*	-7	Float	=	-14	Float
+2	Int	/	-7	Float	=	-0.285714	Float
+2	Int	<	-7	Float	=	false	Bool
+2	Int	<=	-7	Float	=	false	Bool
+2	Int	>	-7	Float	=	true	Bool
+2	Int	>=	-7	Float	=	true	Bool
+2	Int	+	2	Float	=	4	Float
+2	Int	-	2	Float	=	0	Float
+2	Int	*	2	Float	=	4	Float
+2	Int	/	2	Float	=	1	Float
+2	Int	<	2	Float	=	false	Bool
+2	Int	<=	2	Float	=	true	Bool
+2	Int	>	2	Float	=	false	Bool
+2	Int	>=	2	Float	=	true	Bool
+2	Int	+	1.23457e+106	Float	=	1.23457e+106	Float
+2	Int	-	1.23457e+106	Float	=	-1.23457e+106	Float
+2	Int	*	1.23457e+106	Float	=	2.46914e+106	Float
+2	Int	/	1.23457e+106	Float	=	1.62e-106	Float
+2	Int	<	1.23457e+106	Float	=	true	Bool
+2	Int	<=	1.23457e+106	Float	=	true	Bool
+2	Int	>	1.23457e+106	Float	=	false	Bool
+2	Int	>=	1.23457e+106	Float	=	false	Bool
+-7	Int	+	0	Int	=	-7	Int
+-7	Int	-	0	Int	=	-7	Int
+-7	Int	*	0	Int	=	0	Int
+-7	Int	==	0	Int	=	false	Bool
+-7	Int	!=	0	Int	=	true	Bool
+-7	Int	<	0	Int	=	true	Bool
+-7	Int	<=	0	Int	=	true	Bool
+-7	Int	>	0	Int	=	false	Bool
+-7	Int	>=	0	Int	=	false	Bool
+-7	Int	+	1	Int	=	-6	Int
+-7	Int	-	1	Int	=	-8	Int
+-7	Int	*	1	Int	=	-7	Int
+-7	Int	/	1	Int	=	-7	Int
+-7	Int	%	1	Int	=	0	Int
+-7	Int	==	1	Int	=	false	Bool
+-7	Int	!=	1	Int	=	true	Bool
+-7	Int	<	1	Int	=	true	Bool
+-7	Int	<=	1	Int	=	true	Bool
+-7	Int	>	1	Int	=	false	Bool
+-7	Int	>=	1	Int	=	false	Bool
+-7	Int	+	2	Int	=	-5	Int
+-7	Int	-	2	Int	=	-9	Int
+-7	Int	*	2	Int	=	-14	Int
+-7	Int	/	2	Int	=	-3	Int
+-7	Int	%	2	Int	=	-1	Int
+-7	Int	==	2	Int	=	false	Bool
+-7	Int	!=	2	Int	=	true	Bool
+-7	Int	<	2	Int	=	true	Bool
+-7	Int	<=	2	Int	=	true	Bool
+-7	Int	>	2	Int	=	false	Bool
+-7	Int	>=	2	Int	=	false	Bool
+-7	Int	+	-7	Int	=	-14	Int
+-7	Int	-	-7	Int	=	0	Int
+-7	Int	*	-7	Int	=	49	Int
+-7	Int	/	-7	Int	=	1	Int
+-7	Int	%	-7	Int	=	0	Int
+-7	Int	==	-7	Int	=	true	Bool
+-7	Int	!=	-7	Int	=	false	Bool
+-7	Int	<	-7	Int	=	false	Bool
+-7	Int	<=	-7	Int	=	true	Bool
+-7	Int	>	-7	Int	=	false	Bool
+-7	Int	>=	-7	Int	=	true	Bool
+-7	Int	+	4294967296	Int	=	4294967289	Int
+-7	Int	-	4294967296	Int	=	-4294967303	Int
+-7	Int	*	4294967296	Int	=	-30064771072	Int
+-7	Int	/	4294967296	Int	=	0	Int
+-7	Int	%	4294967296	Int	=	-7	Int
+-7	Int	==	4294967296	Int	=	false	Bool
+-7	Int	!=	4294967296	Int	=	true	Bool
+-7	Int	<	4294967296	Int	=	true	Bool
+-7	Int	<=	4294967296	Int	=	true	Bool
+-7	Int	>	4294967296	Int	=	false	Bool
+-7	Int	>=	4294967296	Int	=	false	Bool
+-7	Int	+	0	Float	=	-7	Float
+-7	Int	-	0	Float	=	-7	Float
+-7	Int	*	0	Float	=	-0	Float
+-7	Int	<	0	Float	=	true	Bool
+-7	Int	<=	0	Float	=	true	Bool
+-7	Int	>	0	Float	=	false	Bool
+-7	Int	>=	0	Float	=	false	Bool
+-7	Int	+	-7	Float	=	-14	Float
+-7	Int	-	-7	Float	=	0	Float
+-7	Int	*	-7	Float	=	49	Float
+-7	Int	/	-7	Float	=	1	Float
+-7	Int	<	-7	Float	=	false	Bool
+-7	Int	<=	-7	Float	=	true	Bool
+-7	Int	>	-7	Float	=	false	Bool
+-7	Int	>=	-7	Float	=	true	Bool
+-7	Int	+	2	Float	=	-5	Float
+-7	Int	-	2	Float	=	-9	Float
+-7	Int	*	2	Float	=	-14	Float
+-7	Int	/	2	Float	=	-3.5	Float
+-7	Int	<	2	Float	=	true	Bool
+-7	Int	<=	2	Float	=	true	Bool
+-7	Int	>	2	Float	=	false	Bool
+-7	Int	>=	2	Float	=	false	Bool
+-7	Int	+	1.23457e+106	Float	=	1.23457e+106	Float
+-7	Int	-	1.23457e+106	Float	=	-1.23457e+106	Float
+-7	Int	*	1.23457e+106	Float	=	-8.64197e+106	Float
+-7	Int	/	1.23457e+106	Float	=	-5.67e-106	Float
+-7	Int	<	1.23457e+106	Float	=	true	Bool
+-7	Int	<=	1.23457e+106	Float	=	true	Bool
+-7	Int	>	1.23457e+106	Float	=	false	Bool
+-7	Int	>=	1.23457e+106	Float	=	false	Bool
+4294967296	Int	+	0	Int	=	4294967296	Int
+4294967296	Int	-	0	Int	=	4294967296	Int
+4294967296	Int	*	0	Int	=	0	Int
+4294967296	Int	==	0	Int	=	false	Bool
+4294967296	Int	!=	0	Int	=	true	Bool
+4294967296	Int	<	0	Int	=	false	Bool
+4294967296	Int	<=	0	Int	=	false	Bool
+4294967296	Int	>	0	Int	=	true	Bool
+4294967296	Int	>=	0	Int	=	true	Bool
+4294967296	Int	+	1	Int	=	4294967297	Int
+4294967296	Int	-	1	Int	=	4294967295	Int
+4294967296	Int	*	1	Int	=	4294967296	Int
+4294967296	Int	/	1	Int	=	4294967296	Int
+4294967296	Int	%	1	Int	=	0	Int
+4294967296	Int	==	1	Int	=	false	Bool
+4294967296	Int	!=	1	Int	=	true	Bool
+4294967296	Int	<	1	Int	=	false	Bool
+4294967296	Int	<=	1	Int	=	false	Bool
+4294967296	Int	>	1	Int	=	true	Bool
+4294967296	Int	>=	1	Int	=	true	Bool
+4294967296	Int	+	2	Int	=	4294967298	Int
+4294967296	Int	-	2	Int	=	4294967294	Int
+4294967296	Int	*	2	Int	=	8589934592	Int
+4294967296	Int	/	2	Int	=	2147483648	Int
+4294967296	Int	%	2	Int	=	0	Int
+4294967296	Int	==	2	Int	=	false	Bool
+4294967296	Int	!=	2	Int	=	true	Bool
+4294967296	Int	<	2	Int	=	false	Bool
+4294967296	Int	<=	2	Int	=	false	Bool
+4294967296	Int	>	2	Int	=	true	Bool
+4294967296	Int	>=	2	Int	=	true	Bool
+4294967296	Int	+	-7	Int	=	4294967289	Int
+4294967296	Int	-	-7	Int	=	4294967303	Int
+4294967296	Int	*	-7	Int	=	-30064771072	Int
+4294967296	Int	/	-7	Int	=	-613566756	Int
+4294967296	Int	%	-7	Int	=	4	Int
+4294967296	Int	==	-7	Int	=	false	Bool
+4294967296	Int	!=	-7	Int	=	true	Bool
+4294967296	Int	<	-7	Int	=	false	Bool
+4294967296	Int	<=	-7	Int	=	false	Bool
+4294967296	Int	>	-7	Int	=	true	Bool
+4294967296	Int	>=	-7	Int	=	true	Bool
+4294967296	Int	+	4294967296	Int	=	8589934592	Int
+4294967296	Int	-	4294967296	Int	=	0	Int
+4294967296	Int	*	4294967296	Int	=	0	Int
+4294967296	Int	/	4294967296	Int	=	1	Int
+4294967296	Int	%	4294967296	Int	=	0	Int
+4294967296	Int	==	4294967296	Int	=	true	Bool
+4294967296	Int	!=	4294967296	Int	=	false	Bool
+4294967296	Int	<	4294967296	Int	=	false	Bool
+4294967296	Int	<=	4294967296	Int	=	true	Bool
+4294967296	Int	>	4294967296	Int	=	false	Bool
+4294967296	Int	>=	4294967296	Int	=	true	Bool
+4294967296	Int	+	0	Float	=	4.29497e+09	Float
+4294967296	Int	-	0	Float	=	4.29497e+09	Float
+4294967296	Int	*	0	Float	=	0	Float
+4294967296	Int	<	0	Float	=	false	Bool
+4294967296	Int	<=	0	Float	=	false	Bool
+4294967296	Int	>	0	Float	=	true	Bool
+4294967296	Int	>=	0	Float	=	true	Bool
+4294967296	Int	+	-7	Float	=	4.29497e+09	Float
+4294967296	Int	-	-7	Float	=	4.29497e+09	Float
+4294967296	Int	*	-7	Float	=	-3.00648e+10	Float
+4294967296	Int	/	-7	Float	=	-6.13567e+08	Float
+4294967296	Int	<	-7	Float	=	false	Bool
+4294967296	Int	<=	-7	Float	=	false	Bool
+4294967296	Int	>	-7	Float	=	true	Bool
+4294967296	Int	>=	-7	Float	=	true	Bool
+4294967296	Int	+	2	Float	=	4.29497e+09	Float
+4294967296	Int	-	2	Float	=	4.29497e+09	Float
+4294967296	Int	*	2	Float	=	8.58993e+09	Float
+4294967296	Int	/	2	Float	=	2.14748e+09	Float
+4294967296	Int	<	2	Float	=	false	Bool
+4294967296	Int	<=	2	Float	=	false	Bool
+4294967296	Int	>	2	Float	=	true	Bool
+4294967296	Int	>=	2	Float	=	true	Bool
+4294967296	Int	+	1.23457e+106	Float	=	1.23457e+106	Float
+4294967296	Int	-	1.23457e+106	Float	=	-1.23457e+106	Float
+4294967296	Int	*	1.23457e+106	Float	=	5.30243e+115	Float
+4294967296	Int	/	1.23457e+106	Float	=	3.47892e-97	Float
+4294967296	Int	<	1.23457e+106	Float	=	true	Bool
+4294967296	Int	<=	1.23457e+106	Float	=	true	Bool
+4294967296	Int	>	1.23457e+106	Float	=	false	Bool
+4294967296	Int	>=	1.23457e+106	Float	=	false	Bool
+0	Float	+	0	Int	=	0	Float
+0	Float	-	0	Int	=	0	Float
+0	Float	*	0	Int	=	0	Float
+0	Float	<	0	Int	=	false	Bool
+0	Float	<=	0	Int	=	true	Bool
+0	Float	>	0	Int	=	false	Bool
+0	Float	>=	0	Int	=	true	Bool
+0	Float	+	1	Int	=	1	Float
+0	Float	-	1	Int	=	-1	Float
+0	Float	*	1	Int	=	0	Float
+0	Float	/	1	Int	=	0	Float
+0	Float	<	1	Int	=	true	Bool
+0	Float	<=	1	Int	=	true	Bool
+0	Float	>	1	Int	=	false	Bool
+0	Float	>=	1	Int	=	false	Bool
+0	Float	+	2	Int	=	2	Float
+0	Float	-	2	Int	=	-2	Float
+0	Float	*	2	Int	=	0	Float
+0	Float	/	2	Int	=	0	Float
+0	Float	<	2	Int	=	true	Bool
+0	Float	<=	2	Int	=	true	Bool
+0	Float	>	2	Int	=	false	Bool
+0	Float	>=	2	Int	=	false	Bool
+0	Float	+	-7	Int	=	-7	Float
+0	Float	-	-7	Int	=	7	Float
+0	Float	*	-7	Int	=	-0	Float
+0	Float	/	-7	Int	=	-0	Float
+0	Float	<	-7	Int	=	false	Bool
+0	Float	<=	-7	Int	=	false	Bool
+0	Float	>	-7	Int	=	true	Bool
+0	Float	>=	-7	Int	=	true	Bool
+0	Float	+	4294967296	Int	=	4.29497e+09	Float
+0	Float	-	4294967296	Int	=	-4.29497e+09	Float
+0	Float	*	4294967296	Int	=	0	Float
+0	Float	/	4294967296	Int	=	0	Float
+0	Float	<	4294967296	Int	=	true	Bool
+0	Float	<=	4294967296	Int	=	true	Bool
+0	Float	>	4294967296	Int	=	false	Bool
+0	Float	>=	4294967296	Int	=	false	Bool
+0	Float	+	0	Float	=	0	Float
+0	Float	-	0	Float	=	0	Float
+0	Float	*	0	Float	=	0	Float
+0	Float	==	0	Float	=	true	Bool
+0	Float	!=	0	Float	=	false	Bool
+0	Float	<	0	Float	=	false	Bool
+0	Float	<=	0	Float	=	true	Bool
+0	Float	>	0	Float	=	false	Bool
+0	Float	>=	0	Float	=	true	Bool
+0	Float	+	-7	Float	=	-7	Float
+0	Float	-	-7	Float	=	7	Float
+0	Float	*	-7	Float	=	-0	Float
+0	Float	/	-7	Float	=	-0	Float
+0	Float	==	-7	Float	=	false	Bool
+0	Float	!=	-7	Float	=	true	Bool
+0	Float	<	-7	Float	=	false	Bool
+0	Float	<=	-7	Float	=	false	Bool
+0	Float	>	-7	Float	=	true	Bool
+0	Float	>=	-7	Float	=	true	Bool
+0	Float	+	2	Float	=	2	Float
+0	Float	-	2	Float	=	-2	Float
+0	Float	*	2	Float	=	0	Float
+0	Float	/	2	Float	=	0	Float
+0	Float	==	2	Float	=	false	Bool
+0	Float	!=	2	Float	=	true	Bool
+0	Float	<	2	Float	=	true	Bool
+0	Float	<=	2	Float	=	true	Bool
+0	Float	>	2	Float	=	false	Bool
+0	Float	>=	2	Float	=	false	Bool
+0	Float	+	1.23457e+106	Float	=	1.23457e+106	Float
+0	Float	-	1.23457e+106	Float	=	-1.23457e+106	Float
+0	Float	*	1.23457e+106	Float	=	0	Float
+0	Float	/	1.23457e+106	Float	=	0	Float
+0	Float	==	1.23457e+106	Float	=	false	Bool
+0	Float	!=	1.23457e+106	Float	=	true	Bool
+0	Float	<	1.23457e+106	Float	=	true	Bool
+0	Float	<=	1.23457e+106	Float	=	true	Bool
+0	Float	>	1.23457e+106	Float	=	false	Bool
+0	Float	>=	1.23457e+106	Float	=	false	Bool
+-7	Float	+	0	Int	=	-7	Float
+-7	Float	-	0	Int	=	-7	Float
+-7	Float	*	0	Int	=	-0	Float
+-7	Float	<	0	Int	=	true	Bool
+-7	Float	<=	0	Int	=	true	Bool
+-7	Float	>	0	Int	=	false	Bool
+-7	Float	>=	0	Int	=	false	Bool
+-7	Float	+	1	Int	=	-6	Float
+-7	Float	-	1	Int	=	-8	Float
+-7	Float	*	1	Int	=	-7	Float
+-7	Float	/	1	Int	=	-7	Float
+-7	Float	<	1	Int	=	true	Bool
+-7	Float	<=	1	Int	=	true	Bool
+-7	Float	>	1	Int	=	false	Bool
+-7	Float	>=	1	Int	=	false	Bool
+-7	Float	+	2	Int	=	-5	Float
+-7	Float	-	2	Int	=	-9	Float
+-7	Float	*	2	Int	=	-14	Float
+-7	Float	/	2	Int	=	-3.5	Float
+-7	Float	<	2	Int	=	true	Bool
+-7	Float	<=	2	Int	=	true	Bool
+-7	Float	>	2	Int	=	false	Bool
+-7	Float	>=	2	Int	=	false	Bool
+-7	Float	+	-7	Int	=	-14	Float
+-7	Float	-	-7	Int	=	0	Float
+-7	Float	*	-7	Int	=	49	Float
+-7	Float	/	-7	Int	=	1	Float
+-7	Float	<	-7	Int	=	false	Bool
+-7	Float	<=	-7	Int	=	true	Bool
+-7	Float	>	-7	Int	=	false	Bool
+-7	Float	>=	-7	Int	=	true	Bool
+-7	Float	+	4294967296	Int	=	4.29497e+09	Float
+-7	Float	-	4294967296	Int	=	-4.29497e+09	Float
+-7	Float	*	4294967296	Int	=	-3.00648e+10	Float
+-7	Float	/	4294967296	Int	=	-1.62981e-09	Float
+-7	Float	<	4294967296	Int	=	true	Bool
+-7	Float	<=	4294967296	Int	=	true	Bool
+-7	Float	>	4294967296	Int	=	false	Bool
+-7	Float	>=	4294967296	Int	=	false	Bool
+-7	Float	+	0	Float	=	-7	Float
+-7	Float	-	0	Float	=	-7	Float
+-7	Float	*	0	Float	=	-0	Float
+-7	Float	==	0	Float	=	false	Bool
+-7	Float	!=	0	Float	=	true	Bool
+-7	Float	<	0	Float	=	true	Bool
+-7	Float	<=	0	Float	=	true	Bool
+-7	Float	>	0	Float	=	false	Bool
+-7	Float	>=	0	Float	=	false	Bool
+-7	Float	+	-7	Float	=	-14	Float
+-7	Float	-	-7	Float	=	0	Float
+-7	Float	*	-7	Float	=	49	Float
+-7	Float	/	-7	Float	=	1	Float
+-7	Float	==	-7	Float	=	true	Bool
+-7	Float	!=	-7	Float	=	false	Bool
+-7	Float	<	-7	Float	=	false	Bool
+-7	Float	<=	-7	Float	=	true	Bool
+-7	Float	>	-7	Float	=	false	Bool
+-7	Float	>=	-7	Float	=	true	Bool
+-7	Float	+	2	Float	=	-5	Float
+-7	Float	-	2	Float	=	-9	Float
+-7	Float	*	2	Float	=	-14	Float
+-7	Float	/	2	Float	=	-3.5	Float
+-7	Float	==	2	Float	=	false	Bool
+-7	Float	!=	2	Float	=	true	Bool
+-7	Float	<	2	Float	=	true	Bool
+-7	Float	<=	2	Float	=	true	Bool
+-7	Float	>	2	Float	=	false	Bool
+-7	Float	>=	2	Float	=	false	Bool
+-7	Float	+	1.23457e+106	Float	=	1.23457e+106	Float
+-7	Float	-	1.23457e+106	Float	=	-1.23457e+106	Float
+-7	Float	*	1.23457e+106	Float	=	-8.64197e+106	Float
+-7	Float	/	1.23457e+106	Float	=	-5.67e-106	Float
+-7	Float	==	1.23457e+106	Float	=	false	Bool
+-7	Float	!=	1.23457e+106	Float	=	true	Bool
+-7	Float	<	1.23457e+106	Float	=	true	Bool
+-7	Float	<=	1.23457e+106	Float	=	true	Bool
+-7	Float	>	1.23457e+106	Float	=	false	Bool
+-7	Float	>=	1.23457e+106	Float	=	false	Bool
+2	Float	+	0	Int	=	2	Float
+2	Float	-	0	Int	=	2	Float
+2	Float	*	0	Int	=	0	Float
+2	Float	<	0	Int	=	false	Bool
+2	Float	<=	0	Int	=	false	Bool
+2	Float	>	0	Int	=	true	Bool
+2	Float	>=	0	Int	=	true	Bool
+2	Float	+	1	Int	=	3	Float
+2	Float	-	1	Int	=	1	Float
+2	Float	*	1	Int	=	2	Float
+2	Float	/	1	Int	=	2	Float
+2	Float	<	1	Int	=	false	Bool
+2	Float	<=	1	Int	=	false	Bool
+2	Float	>	1	Int	=	true	Bool
+2	Float	>=	1	Int	=	true	Bool
+2	Float	+	2	Int	=	4	Float
+2	Float	-	2	Int	=	0	Float
+2	Float	*	2	Int	=	4	Float
+2	Float	/	2	Int	=	1	Float
+2	Float	<	2	Int	=	false	Bool
+2	Float	<=	2	Int	=	true	Bool
+2	Float	>	2	Int	=	false	Bool
+2	Float	>=	2	Int	=	true	Bool
+2	Float	+	-7	Int	=	-5	Float
+2	Float	-	-7	Int	=	9	Float
+2	Float	*	-7	Int	=	-14	Float
+2	Float	/	-7	Int	=	-0.285714	Float
+2	Float	<	-7	Int	=	false	Bool
+2	Float	<=	-7	Int	=	false	Bool
+2	Float	>	-7	Int	=	true	Bool
+2	Float	>=	-7	Int	=	true	Bool
+2	Float	+	4294967296	Int	=	4.29497e+09	Float
+2	Float	-	4294967296	Int	=	-4.29497e+09	Float
+2	Float	*	4294967296	Int	=	8.58993e+09	Float
+2	Float	/	4294967296	Int	=	4.65661e-10	Float
+2	Float	<	4294967296	Int	=	true	Bool
+2	Float	<=	4294967296	Int	=	true	Bool
+2	Float	>	4294967296	Int	=	false	Bool
+2	Float	>=	4294967296	Int	=	false	Bool
+2	Float	+	0	Float	=	2	Float
+2	Float	-	0	Float	=	2	Float
+2	Float	*	0	Float	=	0	Float
+2	Float	==	0	Float	=	false	Bool
+2	Float	!=	0	Float	=	true	Bool
+2	Float	<	0	Float	=	false	Bool
+2	Float	<=	0	Float	=	false	Bool
+2	Float	>	0	Float	=	true	Bool
+2	Float	>=	0	Float	=	true	Bool
+2	Float	+	-7	Float	=	-5	Float
+2	Float	-	-7	Float	=	9	Float
+2	Float	*	-7	Float	=	-14	Float
+2	Float	/	-7	Float	=	-0.285714	Float
+2	Float	==	-7	Float	=	false	Bool
+2	Float	!=	-7	Float	=	true	Bool
+2	Float	<	-7	Float	=	false	Bool
+2	Float	<=	-7	Float	=	false	Bool
+2	Float	>	-7	Float	=	true	Bool
+2	Float	>=	-7	Float	=	true	Bool
+2	Float	+	2	Float	=	4	Float
+2	Float	-	2	Float	=	0	Float
+2	Float	*	2	Float	=	4	Float
+2	Float	/	2	Float	=	1	Float
+2	Float	==	2	Float	=	true	Bool
+2	Float	!=	2	Float	=	false	Bool
+2	Float	<	2	Float	=	false	Bool
+2	Float	<=	2	Float	=	true	Bool
+2	Float	>	2	Float	=	false	Bool
+2	Float	>=	2	Float	=	true	Bool
+2	Float	+	1.23457e+106	Float	=	1.23457e+106	Float
+2	Float	-	1.23457e+106	Float	=	-1.23457e+106	Float
+2	Float	*	1.23457e+106	Float	=	2.46914e+106	Float
+2	Float	/	1.23457e+106	Float	=	1.62e-106	Float
+2	Float	==	1.23457e+106	Float	=	false	Bool
+2	Float	!=	1.23457e+106	Float	=	true	Bool
+2	Float	<	1.23457e+106	Float	=	true	Bool
+2	Float	<=	1.23457e+106	Float	=	true	Bool
+2	Float	>	1.23457e+106	Float	=	false	Bool
+2	Float	>=	1.23457e+106	Float	=	false	Bool
+1.23457e+106	Float	+	0	Int	=	1.23457e+106	Float
+1.23457e+106	Float	-	0	Int	=	1.23457e+106	Float
+1.23457e+106	Float	*	0	Int	=	0	Float
+1.23457e+106	Float	<	0	Int	=	false	Bool
+1.23457e+106	Float	<=	0	Int	=	false	Bool
+1.23457e+106	Float	>	0	Int	=	true	Bool
+1.23457e+106	Float	>=	0	Int	=	true	Bool
+1.23457e+106	Float	+	1	Int	=	1.23457e+106	Float
+1.23457e+106	Float	-	1	Int	=	1.23457e+106	Float
+1.23457e+106	Float	*	1	Int	=	1.23457e+106	Float
+1.23457e+106	Float	/	1	Int	=	1.23457e+106	Float
+1.23457e+106	Float	<	1	Int	=	false	Bool
+1.23457e+106	Float	<=	1	Int	=	false	Bool
+1.23457e+106	Float	>	1	Int	=	true	Bool
+1.23457e+106	Float	>=	1	Int	=	true	Bool
+1.23457e+106	Float	+	2	Int	=	1.23457e+106	Float
+1.23457e+106	Float	-	2	Int	=	1.23457e+106	Float
+1.23457e+106	Float	*	2	Int	=	2.46914e+106	Float
+1.23457e+106	Float	/	2	Int	=	6.17284e+105	Float
+1.23457e+106	Float	<	2	Int	=	false	Bool
+1.23457e+106	Float	<=	2	Int	=	false	Bool
+1.23457e+106	Float	>	2	Int	=	true	Bool
+1.23457e+106	Float	>=	2	Int	=	true	Bool
+1.23457e+106	Float	+	-7	Int	=	1.23457e+106	Float
+1.23457e+106	Float	-	-7	Int	=	1.23457e+106	Float
+1.23457e+106	Float	*	-7	Int	=	-8.64197e+106	Float
+1.23457e+106	Float	/	-7	Int	=	-1.76367e+105	Float
+1.23457e+106	Float	<	-7	Int	=	false	Bool
+1.23457e+106	Float	<=	-7	Int	=	false	Bool
+1.23457e+106	Float	>	-7	Int	=	true	Bool
+1.23457e+106	Float	>=	-7	Int	=	true	Bool
+1.23457e+106	Float	+	4294967296	Int	=	1.23457e+106	Float
+1.23457e+106	Float	-	4294967296	Int	=	1.23457e+106	Float
+1.23457e+106	Float	*	4294967296	Int	=	5.30243e+115	Float
+1.23457e+106	Float	/	4294967296	Int	=	2.87445e+96	Float
+1.23457e+106	Float	<	4294967296	Int	=	false	Bool
+1.23457e+106	Float	<=	4294967296	Int	=	false	Bool
+1.23457e+106	Float	>	4294967296	Int	=	true	Bool
+1.23457e+106	Float	>=	4294967296	Int	=	true	Bool
+1.23457e+106	Float	+	0	Float	=	1.23457e+106	Float
+1.23457e+106	Float	-	0	Float	=	1.23457e+106	Float
+1.23457e+106	Float	*	0	Float	=	0	Float
+1.23457e+106	Float	==	0	Float	=	false	Bool
+1.23457e+106	Float	!=	0	Float	=	true	Bool
+1.23457e+106	Float	<	0	Float	=	false	Bool
+1.23457e+106	Float	<=	0	Float	=	false	Bool
+1.23457e+106	Float	>	0	Float	=	true	Bool
+1.23457e+106	Float	>=	0	Float	=	true	Bool
+1.23457e+106	Float	+	-7	Float	=	1.23457e+106	Float
+1.23457e+106	Float	-	-7	Float	=	1.23457e+106	Float
+1.23457e+106	Float	*	-7	Float	=	-8.64197e+106	Float
+1.23457e+106	Float	/	-7	Float	=	-1.76367e+105	Float
+1.23457e+106	Float	==	-7	Float	=	false	Bool
+1.23457e+106	Float	!=	-7	Float	=	true	Bool
+1.23457e+106	Float	<	-7	Float	=	false	Bool
+1.23457e+106	Float	<=	-7	Float	=	false	Bool
+1.23457e+106	Float	>	-7	Float	=	true	Bool
+1.23457e+106	Float	>=	-7	Float	=	true	Bool
+1.23457e+106	Float	+	2	Float	=	1.23457e+106	Float
+1.23457e+106	Float	-	2	Float	=	1.23457e+106	Float
+1.23457e+106	Float	*	2	Float	=	2.46914e+106	Float
+1.23457e+106	Float	/	2	Float	=	6.17284e+105	Float
+1.23457e+106	Float	==	2	Float	=	false	Bool
+1.23457e+106	Float	!=	2	Float	=	true	Bool
+1.23457e+106	Float	<	2	Float	=	false	Bool
+1.23457e+106	Float	<=	2	Float	=	false	Bool
+1.23457e+106	Float	>	2	Float	=	true	Bool
+1.23457e+106	Float	>=	2	Float	=	true	Bool
+1.23457e+106	Float	+	1.23457e+106	Float	=	2.46914e+106	Float
+1.23457e+106	Float	-	1.23457e+106	Float	=	0	Float
+1.23457e+106	Float	*	1.23457e+106	Float	=	1.52416e+212	Float
+1.23457e+106	Float	/	1.23457e+106	Float	=	1	Float
+1.23457e+106	Float	==	1.23457e+106	Float	=	true	Bool
+1.23457e+106	Float	!=	1.23457e+106	Float	=	false	Bool
+1.23457e+106	Float	<	1.23457e+106	Float	=	false	Bool
+1.23457e+106	Float	<=	1.23457e+106	Float	=	true	Bool
+1.23457e+106	Float	>	1.23457e+106	Float	=	false	Bool
+1.23457e+106	Float	>=	1.23457e+106	Float	=	true	Bool
+[]	Array	+	null	Null	=	[null]	Array
+[]	Array	-	null	Null	=	[]	Array
+[]	Array	+	true	Bool	=	[true]	Array
+[]	Array	-	true	Bool	=	[]	Array
+[]	Array	+	false	Bool	=	[false]	Array
+[]	Array	-	false	Bool	=	[]	Array
+[]	Array	+	0	Int	=	[0]	Array
+[]	Array	-	0	Int	=	[]	Array
+[]	Array	+	1	Int	=	[1]	Array
+[]	Array	-	1	Int	=	[]	Array
+[]	Array	+	2	Int	=	[2]	Array
+[]	Array	-	2	Int	=	[]	Array
+[]	Array	+	-7	Int	=	[-7]	Array
+[]	Array	-	-7	Int	=	[]	Array
+[]	Array	+	4294967296	Int	=	[4294967296]	Array
+[]	Array	-	4294967296	Int	=	[]	Array
+[]	Array	+	0	Float	=	[0]	Array
+[]	Array	-	0	Float	=	[]	Array
+[]	Array	+	-7	Float	=	[-7]	Array
+[]	Array	-	-7	Float	=	[]	Array
+[]	Array	+	2	Float	=	[2]	Array
+[]	Array	-	2	Float	=	[]	Array
+[]	Array	+	1.23457e+106	Float	=	[1.23457e+106]	Array
+[]	Array	-	1.23457e+106	Float	=	[]	Array
+[]	Array	+	[]	Array	=	[[]]	Array
+[]	Array	-	[]	Array	=	[]	Array
+[]	Array	+	[1]	Array	=	[[1]]	Array
+[]	Array	-	[1]	Array	=	[]	Array
+[]	Array	+	[1, 2, three]	Array	=	[[1, 2, three]]	Array
+[]	Array	-	[1, 2, three]	Array	=	[]	Array
+[]	Array	+	[1, [2], three]	Array	=	[[1, [2], three]]	Array
+[]	Array	-	[1, [2], three]	Array	=	[]	Array
+[]	Array	+		String	=	[]	Array
+[]	Array	-		String	=	[]	Array
+[]	Array	+	foobar	String	=	[foobar]	Array
+[]	Array	-	foobar	String	=	[]	Array
+[]	Array	+	three	String	=	[three]	Array
+[]	Array	-	three	String	=	[]	Array
+[]	Array	+	Ňöüṁéŋøñ	String	=	[Ňöüṁéŋøñ]	Array
+[]	Array	-	Ňöüṁéŋøñ	String	=	[]	Array
+[]	Array	+	{}	Object	=	[{}]	Array
+[]	Array	-	{}	Object	=	[]	Array
+[]	Array	+	{answer: 42, foobar: raboof, hello: world}	Object	=	[{answer: 42, foobar: raboof, hello: world}]	Array
+[]	Array	-	{answer: 42, foobar: raboof, hello: world}	Object	=	[]	Array
+[]	Array	+	{array: [raboof], hello: world, object: {some: thing}}	Object	=	[{array: [raboof], hello: world, object: {some: thing}}]	Array
+[]	Array	-	{array: [raboof], hello: world, object: {some: thing}}	Object	=	[]	Array
+[]	Array	+	function()	Function	=	[function()]	Array
+[]	Array	-	function()	Function	=	[]	Array
+[]	Array	+	function(one,two,three)	Function	=	[function(one,two,three)]	Array
+[]	Array	-	function(one,two,three)	Function	=	[]	Array
+[1]	Array	+	null	Null	=	[1, null]	Array
+[1]	Array	-	null	Null	=	[1]	Array
+[1]	Array	+	true	Bool	=	[1, true]	Array
+[1]	Array	-	true	Bool	=	[1]	Array
+[1]	Array	+	false	Bool	=	[1, false]	Array
+[1]	Array	-	false	Bool	=	[1]	Array
+[1]	Array	+	0	Int	=	[1, 0]	Array
+[1]	Array	-	0	Int	=	[1]	Array
+[1]	Array	+	1	Int	=	[1, 1]	Array
+[1]	Array	-	1	Int	=	[]	Array
+[1]	Array	+	2	Int	=	[1, 2]	Array
+[1]	Array	-	2	Int	=	[1]	Array
+[1]	Array	+	-7	Int	=	[1, -7]	Array
+[1]	Array	-	-7	Int	=	[1]	Array
+[1]	Array	+	4294967296	Int	=	[1, 4294967296]	Array
+[1]	Array	-	4294967296	Int	=	[1]	Array
+[1]	Array	+	0	Float	=	[1, 0]	Array
+[1]	Array	-	0	Float	=	[1]	Array
+[1]	Array	+	-7	Float	=	[1, -7]	Array
+[1]	Array	-	-7	Float	=	[1]	Array
+[1]	Array	+	2	Float	=	[1, 2]	Array
+[1]	Array	-	2	Float	=	[1]	Array
+[1]	Array	+	1.23457e+106	Float	=	[1, 1.23457e+106]	Array
+[1]	Array	-	1.23457e+106	Float	=	[1]	Array
+[1]	Array	+	[]	Array	=	[1, []]	Array
+[1]	Array	-	[]	Array	=	[1]	Array
+[1]	Array	+	[1]	Array	=	[1, [1]]	Array
+[1]	Array	-	[1]	Array	=	[1]	Array
+[1]	Array	+	[1, 2, three]	Array	=	[1, [1, 2, three]]	Array
+[1]	Array	-	[1, 2, three]	Array	=	[1]	Array
+[1]	Array	+	[1, [2], three]	Array	=	[1, [1, [2], three]]	Array
+[1]	Array	-	[1, [2], three]	Array	=	[1]	Array
+[1]	Array	+		String	=	[1, ]	Array
+[1]	Array	-		String	=	[1]	Array
+[1]	Array	+	foobar	String	=	[1, foobar]	Array
+[1]	Array	-	foobar	String	=	[1]	Array
+[1]	Array	+	three	String	=	[1, three]	Array
+[1]	Array	-	three	String	=	[1]	Array
+[1]	Array	+	Ňöüṁéŋøñ	String	=	[1, Ňöüṁéŋøñ]	Array
+[1]	Array	-	Ňöüṁéŋøñ	String	=	[1]	Array
+[1]	Array	+	{}	Object	=	[1, {}]	Array
+[1]	Array	-	{}	Object	=	[1]	Array
+[1]	Array	+	{answer: 42, foobar: raboof, hello: world}	Object	=	[1, {answer: 42, foobar: raboof, hello: world}]	Array
+[1]	Array	-	{answer: 42, foobar: raboof, hello: world}	Object	=	[1]	Array
+[1]	Array	+	{array: [raboof], hello: world, object: {some: thing}}	Object	=	[1, {array: [raboof], hello: world, object: {some: thing}}]	Array
+[1]	Array	-	{array: [raboof], hello: world, object: {some: thing}}	Object	=	[1]	Array
+[1]	Array	+	function()	Function	=	[1, function()]	Array
+[1]	Array	-	function()	Function	=	[1]	Array
+[1]	Array	+	function(one,two,three)	Function	=	[1, function(one,two,three)]	Array
+[1]	Array	-	function(one,two,three)	Function	=	[1]	Array
+[1, 2, three]	Array	+	null	Null	=	[1, 2, three, null]	Array
+[1, 2, three]	Array	-	null	Null	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	true	Bool	=	[1, 2, three, true]	Array
+[1, 2, three]	Array	-	true	Bool	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	false	Bool	=	[1, 2, three, false]	Array
+[1, 2, three]	Array	-	false	Bool	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	0	Int	=	[1, 2, three, 0]	Array
+[1, 2, three]	Array	-	0	Int	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	1	Int	=	[1, 2, three, 1]	Array
+[1, 2, three]	Array	-	1	Int	=	[2, three]	Array
+[1, 2, three]	Array	+	2	Int	=	[1, 2, three, 2]	Array
+[1, 2, three]	Array	-	2	Int	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	-7	Int	=	[1, 2, three, -7]	Array
+[1, 2, three]	Array	-	-7	Int	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	4294967296	Int	=	[1, 2, three, 4294967296]	Array
+[1, 2, three]	Array	-	4294967296	Int	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	0	Float	=	[1, 2, three, 0]	Array
+[1, 2, three]	Array	-	0	Float	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	-7	Float	=	[1, 2, three, -7]	Array
+[1, 2, three]	Array	-	-7	Float	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	2	Float	=	[1, 2, three, 2]	Array
+[1, 2, three]	Array	-	2	Float	=	[1, three]	Array
+[1, 2, three]	Array	+	1.23457e+106	Float	=	[1, 2, three, 1.23457e+106]	Array
+[1, 2, three]	Array	-	1.23457e+106	Float	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	[]	Array	=	[1, 2, three, []]	Array
+[1, 2, three]	Array	-	[]	Array	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	[1]	Array	=	[1, 2, three, [1]]	Array
+[1, 2, three]	Array	-	[1]	Array	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	[1, 2, three]	Array	=	[1, 2, three, [1, 2, three]]	Array
+[1, 2, three]	Array	-	[1, 2, three]	Array	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	[1, [2], three]	Array	=	[1, 2, three, [1, [2], three]]	Array
+[1, 2, three]	Array	-	[1, [2], three]	Array	=	[1, 2, three]	Array
+[1, 2, three]	Array	+		String	=	[1, 2, three, ]	Array
+[1, 2, three]	Array	-		String	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	foobar	String	=	[1, 2, three, foobar]	Array
+[1, 2, three]	Array	-	foobar	String	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	three	String	=	[1, 2, three, three]	Array
+[1, 2, three]	Array	-	three	String	=	[1, 2]	Array
+[1, 2, three]	Array	+	Ňöüṁéŋøñ	String	=	[1, 2, three, Ňöüṁéŋøñ]	Array
+[1, 2, three]	Array	-	Ňöüṁéŋøñ	String	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	{}	Object	=	[1, 2, three, {}]	Array
+[1, 2, three]	Array	-	{}	Object	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	{answer: 42, foobar: raboof, hello: world}	Object	=	[1, 2, three, {answer: 42, foobar: raboof, hello: world}]	Array
+[1, 2, three]	Array	-	{answer: 42, foobar: raboof, hello: world}	Object	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	{array: [raboof], hello: world, object: {some: thing}}	Object	=	[1, 2, three, {array: [raboof], hello: world, object: {some: thing}}]	Array
+[1, 2, three]	Array	-	{array: [raboof], hello: world, object: {some: thing}}	Object	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	function()	Function	=	[1, 2, three, function()]	Array
+[1, 2, three]	Array	-	function()	Function	=	[1, 2, three]	Array
+[1, 2, three]	Array	+	function(one,two,three)	Function	=	[1, 2, three, function(one,two,three)]	Array
+[1, 2, three]	Array	-	function(one,two,three)	Function	=	[1, 2, three]	Array
+[1, [2], three]	Array	+	null	Null	=	[1, [2], three, null]	Array
+[1, [2], three]	Array	-	null	Null	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	true	Bool	=	[1, [2], three, true]	Array
+[1, [2], three]	Array	-	true	Bool	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	false	Bool	=	[1, [2], three, false]	Array
+[1, [2], three]	Array	-	false	Bool	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	0	Int	=	[1, [2], three, 0]	Array
+[1, [2], three]	Array	-	0	Int	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	1	Int	=	[1, [2], three, 1]	Array
+[1, [2], three]	Array	-	1	Int	=	[[2], three]	Array
+[1, [2], three]	Array	+	2	Int	=	[1, [2], three, 2]	Array
+[1, [2], three]	Array	-	2	Int	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	-7	Int	=	[1, [2], three, -7]	Array
+[1, [2], three]	Array	-	-7	Int	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	4294967296	Int	=	[1, [2], three, 4294967296]	Array
+[1, [2], three]	Array	-	4294967296	Int	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	0	Float	=	[1, [2], three, 0]	Array
+[1, [2], three]	Array	-	0	Float	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	-7	Float	=	[1, [2], three, -7]	Array
+[1, [2], three]	Array	-	-7	Float	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	2	Float	=	[1, [2], three, 2]	Array
+[1, [2], three]	Array	-	2	Float	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	1.23457e+106	Float	=	[1, [2], three, 1.23457e+106]	Array
+[1, [2], three]	Array	-	1.23457e+106	Float	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	[]	Array	=	[1, [2], three, []]	Array
+[1, [2], three]	Array	-	[]	Array	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	[1]	Array	=	[1, [2], three, [1]]	Array
+[1, [2], three]	Array	-	[1]	Array	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	[1, 2, three]	Array	=	[1, [2], three, [1, 2, three]]	Array
+[1, [2], three]	Array	-	[1, 2, three]	Array	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	[1, [2], three]	Array	=	[1, [2], three, [1, [2], three]]	Array
+[1, [2], three]	Array	-	[1, [2], three]	Array	=	[1, [2], three]	Array
+[1, [2], three]	Array	+		String	=	[1, [2], three, ]	Array
+[1, [2], three]	Array	-		String	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	foobar	String	=	[1, [2], three, foobar]	Array
+[1, [2], three]	Array	-	foobar	String	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	three	String	=	[1, [2], three, three]	Array
+[1, [2], three]	Array	-	three	String	=	[1, [2]]	Array
+[1, [2], three]	Array	+	Ňöüṁéŋøñ	String	=	[1, [2], three, Ňöüṁéŋøñ]	Array
+[1, [2], three]	Array	-	Ňöüṁéŋøñ	String	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	{}	Object	=	[1, [2], three, {}]	Array
+[1, [2], three]	Array	-	{}	Object	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	{answer: 42, foobar: raboof, hello: world}	Object	=	[1, [2], three, {answer: 42, foobar: raboof, hello: world}]	Array
+[1, [2], three]	Array	-	{answer: 42, foobar: raboof, hello: world}	Object	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	{array: [raboof], hello: world, object: {some: thing}}	Object	=	[1, [2], three, {array: [raboof], hello: world, object: {some: thing}}]	Array
+[1, [2], three]	Array	-	{array: [raboof], hello: world, object: {some: thing}}	Object	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	function()	Function	=	[1, [2], three, function()]	Array
+[1, [2], three]	Array	-	function()	Function	=	[1, [2], three]	Array
+[1, [2], three]	Array	+	function(one,two,three)	Function	=	[1, [2], three, function(one,two,three)]	Array
+[1, [2], three]	Array	-	function(one,two,three)	Function	=	[1, [2], three]	Array
+	String	+	null	Null	=	null	String
+	String	+	true	Bool	=	true	String
+	String	+	false	Bool	=	false	String
+	String	+	0	Int	=	0	String
+	String	+	1	Int	=	1	String
+	String	+	2	Int	=	2	String
+	String	+	-7	Int	=	-7	String
+	String	+	4294967296	Int	=	4294967296	String
+	String	+	0	Float	=	0.000000	String
+	String	+	-7	Float	=	-7.000000	String
+	String	+	2	Float	=	2.000000	String
+	String	+	1.23457e+106	Float	=	12345678000000000782920456383939053330944511907991254522656692614473840281793595329590352987660944320495616.000000	String
+	String	+	[]	Array	=	Array	String
+	String	+	[1]	Array	=	Array	String
+	String	+	[1, 2, three]	Array	=	Array	String
+	String	+	[1, [2], three]	Array	=	Array	String
+	String	+		String	=		String
+	String	==		String	=	true	Bool
+	String	!=		String	=	false	Bool
+	String	+	foobar	String	=	foobar	String
+	String	==	foobar	String	=	false	Bool
+	String	!=	foobar	String	=	true	Bool
+	String	+	three	String	=	three	String
+	String	==	three	String	=	false	Bool
+	String	!=	three	String	=	true	Bool
+	String	+	Ňöüṁéŋøñ	String	=	Ňöüṁéŋøñ	String
+	String	==	Ňöüṁéŋøñ	String	=	false	Bool
+	String	!=	Ňöüṁéŋøñ	String	=	true	Bool
+	String	+	{}	Object	=	Object	String
+	String	+	{answer: 42, foobar: raboof, hello: world}	Object	=	Object	String
+	String	+	{array: [raboof], hello: world, object: {some: thing}}	Object	=	Object	String
+	String	+	function()	Function	=	Function	String
+	String	+	function(one,two,three)	Function	=	Function	String
+foobar	String	+	null	Null	=	foobarnull	String
+foobar	String	+	true	Bool	=	foobartrue	String
+foobar	String	+	false	Bool	=	foobarfalse	String
+foobar	String	+	0	Int	=	foobar0	String
+foobar	String	+	1	Int	=	foobar1	String
+foobar	String	+	2	Int	=	foobar2	String
+foobar	String	+	-7	Int	=	foobar-7	String
+foobar	String	+	4294967296	Int	=	foobar4294967296	String
+foobar	String	+	0	Float	=	foobar0.000000	String
+foobar	String	+	-7	Float	=	foobar-7.000000	String
+foobar	String	+	2	Float	=	foobar2.000000	String
+foobar	String	+	1.23457e+106	Float	=	foobar12345678000000000782920456383939053330944511907991254522656692614473840281793595329590352987660944320495616.000000	String
+foobar	String	+	[]	Array	=	foobarArray	String
+foobar	String	+	[1]	Array	=	foobarArray	String
+foobar	String	+	[1, 2, three]	Array	=	foobarArray	String
+foobar	String	+	[1, [2], three]	Array	=	foobarArray	String
+foobar	String	+		String	=	foobar	String
+foobar	String	==		String	=	false	Bool
+foobar	String	!=		String	=	true	Bool
+foobar	String	+	foobar	String	=	foobarfoobar	String
+foobar	String	==	foobar	String	=	true	Bool
+foobar	String	!=	foobar	String	=	false	Bool
+foobar	String	+	three	String	=	foobarthree	String
+foobar	String	==	three	String	=	false	Bool
+foobar	String	!=	three	String	=	true	Bool
+foobar	String	+	Ňöüṁéŋøñ	String	=	foobarŇöüṁéŋøñ	String
+foobar	String	==	Ňöüṁéŋøñ	String	=	false	Bool
+foobar	String	!=	Ňöüṁéŋøñ	String	=	true	Bool
+foobar	String	+	{}	Object	=	foobarObject	String
+foobar	String	+	{answer: 42, foobar: raboof, hello: world}	Object	=	foobarObject	String
+foobar	String	+	{array: [raboof], hello: world, object: {some: thing}}	Object	=	foobarObject	String
+foobar	String	+	function()	Function	=	foobarFunction	String
+foobar	String	+	function(one,two,three)	Function	=	foobarFunction	String
+three	String	+	null	Null	=	threenull	String
+three	String	+	true	Bool	=	threetrue	String
+three	String	+	false	Bool	=	threefalse	String
+three	String	+	0	Int	=	three0	String
+three	String	+	1	Int	=	three1	String
+three	String	+	2	Int	=	three2	String
+three	String	+	-7	Int	=	three-7	String
+three	String	+	4294967296	Int	=	three4294967296	String
+three	String	+	0	Float	=	three0.000000	String
+three	String	+	-7	Float	=	three-7.000000	String
+three	String	+	2	Float	=	three2.000000	String
+three	String	+	1.23457e+106	Float	=	three12345678000000000782920456383939053330944511907991254522656692614473840281793595329590352987660944320495616.000000	String
+three	String	+	[]	Array	=	threeArray	String
+three	String	+	[1]	Array	=	threeArray	String
+three	String	+	[1, 2, three]	Array	=	threeArray	String
+three	String	+	[1, [2], three]	Array	=	threeArray	String
+three	String	+		String	=	three	String
+three	String	==		String	=	false	Bool
+three	String	!=		String	=	true	Bool
+three	String	+	foobar	String	=	threefoobar	String
+three	String	==	foobar	String	=	false	Bool
+three	String	!=	foobar	String	=	true	Bool
+three	String	+	three	String	=	threethree	String
+three	String	==	three	String	=	true	Bool
+three	String	!=	three	String	=	false	Bool
+three	String	+	Ňöüṁéŋøñ	String	=	threeŇöüṁéŋøñ	String
+three	String	==	Ňöüṁéŋøñ	String	=	false	Bool
+three	String	!=	Ňöüṁéŋøñ	String	=	true	Bool
+three	String	+	{}	Object	=	threeObject	String
+three	String	+	{answer: 42, foobar: raboof, hello: world}	Object	=	threeObject	String
+three	String	+	{array: [raboof], hello: world, object: {some: thing}}	Object	=	threeObject	String
+three	String	+	function()	Function	=	threeFunction	String
+three	String	+	function(one,two,three)	Function	=	threeFunction	String
+Ňöüṁéŋøñ	String	+	null	Null	=	Ňöüṁéŋøñnull	String
+Ňöüṁéŋøñ	String	+	true	Bool	=	Ňöüṁéŋøñtrue	String
+Ňöüṁéŋøñ	String	+	false	Bool	=	Ňöüṁéŋøñfalse	String
+Ňöüṁéŋøñ	String	+	0	Int	=	Ňöüṁéŋøñ0	String
+Ňöüṁéŋøñ	String	+	1	Int	=	Ňöüṁéŋøñ1	String
+Ňöüṁéŋøñ	String	+	2	Int	=	Ňöüṁéŋøñ2	String
+Ňöüṁéŋøñ	String	+	-7	Int	=	Ňöüṁéŋøñ-7	String
+Ňöüṁéŋøñ	String	+	4294967296	Int	=	Ňöüṁéŋøñ4294967296	String
+Ňöüṁéŋøñ	String	+	0	Float	=	Ňöüṁéŋøñ0.000000	String
+Ňöüṁéŋøñ	String	+	-7	Float	=	Ňöüṁéŋøñ-7.000000	String
+Ňöüṁéŋøñ	String	+	2	Float	=	Ňöüṁéŋøñ2.000000	String
+Ňöüṁéŋøñ	String	+	1.23457e+106	Float	=	Ňöüṁéŋøñ12345678000000000782920456383939053330944511907991254522656692614473840281793595329590352987660944320495616.000000	String
+Ňöüṁéŋøñ	String	+	[]	Array	=	ŇöüṁéŋøñArray	String
+Ňöüṁéŋøñ	String	+	[1]	Array	=	ŇöüṁéŋøñArray	String
+Ňöüṁéŋøñ	String	+	[1, 2, three]	Array	=	ŇöüṁéŋøñArray	String
+Ňöüṁéŋøñ	String	+	[1, [2], three]	Array	=	ŇöüṁéŋøñArray	String
+Ňöüṁéŋøñ	String	+		String	=	Ňöüṁéŋøñ	String
+Ňöüṁéŋøñ	String	==		String	=	false	Bool
+Ňöüṁéŋøñ	String	!=		String	=	true	Bool
+Ňöüṁéŋøñ	String	+	foobar	String	=	Ňöüṁéŋøñfoobar	String
+Ňöüṁéŋøñ	String	==	foobar	String	=	false	Bool
+Ňöüṁéŋøñ	String	!=	foobar	String	=	true	Bool
+Ňöüṁéŋøñ	String	+	three	String	=	Ňöüṁéŋøñthree	String
+Ňöüṁéŋøñ	String	==	three	String	=	false	Bool
+Ňöüṁéŋøñ	String	!=	three	String	=	true	Bool
+Ňöüṁéŋøñ	String	+	Ňöüṁéŋøñ	String	=	ŇöüṁéŋøñŇöüṁéŋøñ	String
+Ňöüṁéŋøñ	String	==	Ňöüṁéŋøñ	String	=	true	Bool
+Ňöüṁéŋøñ	String	!=	Ňöüṁéŋøñ	String	=	false	Bool
+Ňöüṁéŋøñ	String	+	{}	Object	=	ŇöüṁéŋøñObject	String
+Ňöüṁéŋøñ	String	+	{answer: 42, foobar: raboof, hello: world}	Object	=	ŇöüṁéŋøñObject	String
+Ňöüṁéŋøñ	String	+	{array: [raboof], hello: world, object: {some: thing}}	Object	=	ŇöüṁéŋøñObject	String
+Ňöüṁéŋøñ	String	+	function()	Function	=	ŇöüṁéŋøñFunction	String
+Ňöüṁéŋøñ	String	+	function(one,two,three)	Function	=	ŇöüṁéŋøñFunction	String
+{}	Object	-		String	=	{}	Object
+{}	Object	-	foobar	String	=	{}	Object
+{}	Object	-	three	String	=	{}	Object
+{}	Object	-	Ňöüṁéŋøñ	String	=	{}	Object
+{}	Object	&&	{}	Object	=	{}	Object
+{}	Object	||	{}	Object	=	{}	Object
+{}	Object	==	{}	Object	=	true	Bool
+{}	Object	!=	{}	Object	=	false	Bool
+{}	Object	&&	{answer: 42, foobar: raboof, hello: world}	Object	=	{}	Object
+{}	Object	||	{answer: 42, foobar: raboof, hello: world}	Object	=	{answer: 42, foobar: raboof, hello: world}	Object
+{}	Object	==	{answer: 42, foobar: raboof, hello: world}	Object	=	false	Bool
+{}	Object	!=	{answer: 42, foobar: raboof, hello: world}	Object	=	true	Bool
+{}	Object	&&	{array: [raboof], hello: world, object: {some: thing}}	Object	=	{}	Object
+{}	Object	||	{array: [raboof], hello: world, object: {some: thing}}	Object	=	{array: [raboof], hello: world, object: {some: thing}}	Object
+{}	Object	==	{array: [raboof], hello: world, object: {some: thing}}	Object	=	false	Bool
+{}	Object	!=	{array: [raboof], hello: world, object: {some: thing}}	Object	=	true	Bool
+{answer: 42, foobar: raboof, hello: world}	Object	-		String	=	{answer: 42, foobar: raboof, hello: world}	Object
+{answer: 42, foobar: raboof, hello: world}	Object	-	foobar	String	=	{answer: 42, hello: world}	Object
+{answer: 42, foobar: raboof, hello: world}	Object	-	three	String	=	{answer: 42, foobar: raboof, hello: world}	Object
+{answer: 42, foobar: raboof, hello: world}	Object	-	Ňöüṁéŋøñ	String	=	{answer: 42, foobar: raboof, hello: world}	Object
+{answer: 42, foobar: raboof, hello: world}	Object	&&	{}	Object	=	{answer: 42, foobar: raboof, hello: world}	Object
+{answer: 42, foobar: raboof, hello: world}	Object	||	{}	Object	=	{answer: 42, foobar: raboof, hello: world}	Object
+{answer: 42, foobar: raboof, hello: world}	Object	==	{}	Object	=	false	Bool
+{answer: 42, foobar: raboof, hello: world}	Object	!=	{}	Object	=	true	Bool
+{answer: 42, foobar: raboof, hello: world}	Object	&&	{answer: 42, foobar: raboof, hello: world}	Object	=	{answer: 42, foobar: raboof, hello: world}	Object
+{answer: 42, foobar: raboof, hello: world}	Object	||	{answer: 42, foobar: raboof, hello: world}	Object	=	{answer: 42, foobar: raboof, hello: world}	Object
+{answer: 42, foobar: raboof, hello: world}	Object	==	{answer: 42, foobar: raboof, hello: world}	Object	=	true	Bool
+{answer: 42, foobar: raboof, hello: world}	Object	!=	{answer: 42, foobar: raboof, hello: world}	Object	=	true	Bool
+{answer: 42, foobar: raboof, hello: world}	Object	&&	{array: [raboof], hello: world, object: {some: thing}}	Object	=	{answer: 42, foobar: raboof, hello: world}	Object
+{answer: 42, foobar: raboof, hello: world}	Object	||	{array: [raboof], hello: world, object: {some: thing}}	Object	=	{answer: 42, array: [raboof], foobar: raboof, hello: world, object: {some: thing}}	Object
+{answer: 42, foobar: raboof, hello: world}	Object	==	{array: [raboof], hello: world, object: {some: thing}}	Object	=	false	Bool
+{answer: 42, foobar: raboof, hello: world}	Object	!=	{array: [raboof], hello: world, object: {some: thing}}	Object	=	true	Bool
+{array: [raboof], hello: world, object: {some: thing}}	Object	-		String	=	{array: [raboof], hello: world, object: {some: thing}}	Object
+{array: [raboof], hello: world, object: {some: thing}}	Object	-	foobar	String	=	{array: [raboof], hello: world, object: {some: thing}}	Object
+{array: [raboof], hello: world, object: {some: thing}}	Object	-	three	String	=	{array: [raboof], hello: world, object: {some: thing}}	Object
+{array: [raboof], hello: world, object: {some: thing}}	Object	-	Ňöüṁéŋøñ	String	=	{array: [raboof], hello: world, object: {some: thing}}	Object
+{array: [raboof], hello: world, object: {some: thing}}	Object	&&	{}	Object	=	{array: [raboof], hello: world, object: {some: thing}}	Object
+{array: [raboof], hello: world, object: {some: thing}}	Object	||	{}	Object	=	{array: [raboof], hello: world, object: {some: thing}}	Object
+{array: [raboof], hello: world, object: {some: thing}}	Object	==	{}	Object	=	false	Bool
+{array: [raboof], hello: world, object: {some: thing}}	Object	!=	{}	Object	=	true	Bool
+{array: [raboof], hello: world, object: {some: thing}}	Object	&&	{answer: 42, foobar: raboof, hello: world}	Object	=	{array: [raboof], hello: world, object: {some: thing}}	Object
+{array: [raboof], hello: world, object: {some: thing}}	Object	||	{answer: 42, foobar: raboof, hello: world}	Object	=	{answer: 42, array: [raboof], foobar: raboof, hello: world, object: {some: thing}}	Object
+{array: [raboof], hello: world, object: {some: thing}}	Object	==	{answer: 42, foobar: raboof, hello: world}	Object	=	false	Bool
+{array: [raboof], hello: world, object: {some: thing}}	Object	!=	{answer: 42, foobar: raboof, hello: world}	Object	=	true	Bool
+{array: [raboof], hello: world, object: {some: thing}}	Object	&&	{array: [raboof], hello: world, object: {some: thing}}	Object	=	{array: [raboof], hello: world, object: {some: thing}}	Object
+{array: [raboof], hello: world, object: {some: thing}}	Object	||	{array: [raboof], hello: world, object: {some: thing}}	Object	=	{array: [raboof], hello: world, object: {some: thing}}	Object
+{array: [raboof], hello: world, object: {some: thing}}	Object	==	{array: [raboof], hello: world, object: {some: thing}}	Object	=	false	Bool
+{array: [raboof], hello: world, object: {some: thing}}	Object	!=	{array: [raboof], hello: world, object: {some: thing}}	Object	=	true	Bool
