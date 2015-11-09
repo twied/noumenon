@@ -29,16 +29,16 @@
 using namespace std;
 
 static void usage() {
-    cout << "Usage: noumenon [options] [FILE]" << endl
+    cout << "Usage: noumenon [options] [FILE] [arguments]" << endl
         << endl
         << "Options:"
         << endl
         << "  --quiet, -q       Don't show intro" << endl
         << endl
-        << "If FILE is not given, use interactive mode." << endl;
+        << "If FILE is not given or \"--\", use interactive mode." << endl;
 }
 
-int main(int argc, char* argv[]) {
+int main(int, char* argv[], char** env) {
     struct {
         /* script file name */
         string file;
@@ -47,30 +47,54 @@ int main(int argc, char* argv[]) {
         bool quiet;
     } options = {"", false};
 
-    /* parse options */
-    for (int i = 1; i < argc; ++i) {
-        string arg(argv[i]);
+    /* parse noumenon arguments */
+    for(argv++; *argv; argv += 1) {
+        string arg(*argv);
+
+        if (arg == "--") {
+            options.file = arg;
+            argv += 1;
+            break;
+        }
+
+        if (arg.size() > 0 && arg[0] != '-') {
+            break;
+        }
 
         if (arg == "--quiet" || arg == "-q") {
             options.quiet = true;
         } else {
-            if (arg.size() > 0 && arg[0] == '-') {
-                cout << "Unknown option '" << arg << "'" << endl << endl;
-                usage();
-                return 1;
-            }
+            cout << "Unknown option '" << arg << "'" << endl << endl;
+            usage();
+            return 1;
+        }
+    }
 
-            if (options.file.empty()) {
-                options.file = arg;
-            } else {
-                cout << "More than one input file specified" << endl << endl;
-                usage();
-                return 1;
-            }
+    /* filename */
+    if (*argv && options.file.empty()) {
+        options.file = *argv;
+        argv += 1;
+    }
+
+    /* program arguments */
+    const auto& arguments = make_shared<noumenon::ArrayValue>();
+    for(; *argv; argv += 1) {
+        arguments->values.emplace_back(make_shared<noumenon::StringValue>(*argv));
+    }
+
+    const auto& environment = make_shared<noumenon::ObjectValue>();
+    for(;*env; ++env) {
+        const string line(*env);
+        const auto& pos = line.find('=');
+        if(pos != line.npos) {
+            environment->values[line.substr(0, pos)] = make_shared<noumenon::StringValue>(line.substr(pos + 1));
         }
     }
 
     noumenon::Program program(options.quiet);
+    program.insertVariable("arg", arguments);
+    program.insertVariable("env", environment);
+
     program.insertVariable("typeof", make_shared<noumenon::rtl::Typeof>());
     program.insertVariable("print", make_shared<noumenon::rtl::Print>());
     program.insertVariable("println", make_shared<noumenon::rtl::Println>());
@@ -78,7 +102,7 @@ int main(int argc, char* argv[]) {
     program.insertVariable("length", make_shared<noumenon::rtl::Length>());
     program.insertVariable("require", make_shared<noumenon::rtl::Require>());
 
-    if (options.file.empty()) {
+    if (options.file.empty() || options.file == "--") {
         program.insertVariable("list", make_shared<noumenon::rtl::List>());
 
         if (!options.quiet) {

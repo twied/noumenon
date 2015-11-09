@@ -270,7 +270,13 @@ shared_ptr<Value> Require::doCall(Program& program, vector<shared_ptr<Value>>& p
 
     }
 
+    auto arguments = make_shared<ArrayValue>();
+    if (parameters.size() > 1) {
+        arguments->values.assign(parameters.begin() + 1, parameters.end());
+    }
+
     Program nestedProgram(program);
+    nestedProgram.insertVariable("arg", arguments);
     return Program::execute(nestedProgram, file);
 }
 

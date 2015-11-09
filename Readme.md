@@ -49,7 +49,6 @@ for(var subdir : dir.subdirs()) {
 }
 ```
 * Native Code. Similar to "require", but being able to wrap a native library, i.e. ".so" or ".dll" files.
-* Access environment variables and comand line arguments
 
 License
 -------
