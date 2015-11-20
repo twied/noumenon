@@ -1,0 +1,670 @@
+\documentclass[a4paper, parskip, 10pt]{scrartcl}
+
+\usepackage[utf8]                   {inputenc}
+\usepackage[T1]                     {fontenc}
+\usepackage[english]                {babel}
+\usepackage[babel]                  {csquotes}
+
+\usepackage                         {lmodern}
+\usepackage                         {listings}
+\usepackage                         {microtype}
+\usepackage                         {textcomp}
+\usepackage                         {url}
+\usepackage                         {xcolor}
+\usepackage                         {hyperref}
+
+\newcommand{\myAuthor}      {Tim Wiederhake}
+\newcommand{\myTitle}       {Noumenon}
+\newcommand{\mySubtitle}    {Manual}
+\newcommand{\myDate}        {\today}
+
+\author     {\myAuthor}
+\title      {\myTitle}
+\subtitle   {\mySubtitle}
+\date       {\myDate}
+
+\pdfinfo{
+    /Author     (\myAuthor)
+    /Title      (\myTitle)
+    /Keywords   ()
+}
+
+\hypersetup{
+    pdftitle    =\myTitle,
+    pdfauthor   =\myAuthor,
+    pdfsubject  ={\myTitle},
+    colorlinks  =false,
+    pdfborder   =0 0 0
+}
+
+\microtypesetup{
+    activate    ={true,nocompatibility},
+    factor      =1100,
+    final,
+    kerning     =true,
+    shrink      =10,
+    spacing     =true,
+    stretch     =10,
+    tracking    =true
+}
+\microtypecontext{spacing=nonfrench}
+
+\clubpenalty            10000
+\widowpenalty           10000
+\displaywidowpenalty    10000
+
+\pagestyle{headings}
+
+\lstdefinelanguage{Noumenon} {
+    morekeywords    ={var, if, else, while, for, return},
+    morecomment     =[l]{//},
+    morecomment     =[s]{/*}{*/},
+    morestring      =[b]",
+}
+
+\lstset{
+    language        =Noumenon,
+    backgroundcolor =\color{black!8},
+    keywordstyle    =\color{blue!50!black}\bfseries,
+    commentstyle    =\color{red!60!black},
+    numberstyle     =\HUGE,
+    identifierstyle =\color{green!50!black},
+    showstringspaces=false,
+    frame           =single,
+    numbers         =none,
+    breaklines      =true,
+    tabsize         =4,
+    emphstyle       =\textbf,
+    basicstyle      =\ttfamily,
+    numberstyle     =\tiny,
+    captionpos      =b
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+    \noindent Noumenon is a dynamic, strongly typed script language. It is
+    simple, yet powerful and extensible. In contrast to many other languages,
+    there is no automatic type conversion in Noumenon.
+\end{abstract}
+
+\clearpage{}
+\tableofcontents{}
+\vfill{}
+\copyright{} 2015 Tim Wiederhake
+
+This work is licensed under a Creative Commons Attribution 3.0 Unported
+License\footnote{
+\href{http://creativecommons.org/licenses/by/3.0/}
+{http://creativecommons.org/licenses/by/3.0/}}.
+\clearpage{}
+
+
+\section{Building Noumenon}
+Get a copy of Noumenon's source by either \enquote{git cloning}:
+
+\begin{lstlisting}[language={}]
+$ git clone git@github.com:twied/noumenon.git
+$ cd noumenon
+\end{lstlisting}
+
+\ldots{} or downloading the sourcecode zip file:
+\begin{lstlisting}[language={}]
+$ wget https://github.com/twied/noumenon/archive/master.zip
+$ unzip master.zip
+$ cd noumenon-master
+\end{lstlisting}
+
+After that, you can build Noumenon:
+\begin{lstlisting}[language={}]
+$ make
+\end{lstlisting}
+
+If you do not have a make command at your disposal, simply compiling every
+cpp-file togehter should do the trick as well.
+
+Noumenon is developed under Linux but \emph{should} work on different platforms
+as well. If you experience any issues, please report\footnote{
+\href{https://github.com/twied/noumenon/issues}
+{https://github.com/twied/noumenon/issues}}.
+
+\section{Hello World}
+Start Noumenon from your favorite shell. You should see the following:
+
+\begin{lstlisting}[language={}]
+Noumenon 0.1
+Copyright (C) 2015 Tim Wiederhake
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Report bugs to <https://github.com/twied/noumenon/issues>.
+\end{lstlisting}
+
+Enter your first Noumenon program:
+
+\begin{lstlisting}
+println("Hello world!");
+\end{lstlisting}
+
+You should see:
+\begin{lstlisting}
+Hello world!
+\end{lstlisting}
+
+Exit by pressing Ctrl-C or Ctrl-D.
+
+\section{Data types}
+Noumenon knows eight different data types:
+
+\paragraph{Array} An array is a variable list of values. It is not necessary
+that all values have the same type. Even nested arrays are possible. The values
+in an array can change and the length of the array can change as well. Arrays
+are denoted by square brackets (\texttt{[]}) and values are separated by commas
+(\texttt{,}).
+
+\paragraph{Bool} A boolean value may either be \texttt{true} or \texttt{false}.
+
+\paragraph{Float} A float is an IEEE 754 floating-point number of double
+precision, your default \texttt{double} in C. To tell Noumenon that an entered
+number is a float, you have to include the dot, i.e. \texttt{1.0} is float,
+\texttt{1} is not.
+
+\paragraph{Function} Functions have a variable number of arguments and may or
+may not return a value. Missing arguments are filled up with \texttt{null}
+values. If the function is returning no value, an implicit \texttt{null} value
+is returned.
+
+\paragraph{Int} A signed 64 bit integral number, \texttt{signed long long int}
+in C.
+
+\paragraph{Null} The \texttt{null} value is generally an error value,
+expressing some kind of failure. It is safe to operate on \texttt{null}, even
+dereferencing it like an array or object as every operation on \texttt{null}
+results in \texttt{null} without any side effects.
+
+\paragraph{Object} An unordered mapping from IDs to values. As with arrays, the
+values do not have to be of the same type and nested objects are possible. The
+mappings of an object may be changed. Objects are denoted by curly brackets
+(\texttt{\{\}}), the ID is separated from the value by a colon (\texttt{:}) and
+multiple mappings are separated by commas (\texttt{,}).
+
+\paragraph{String} Dynamic string of arbitrary length. The usual escaping
+mechanisms work, \texttt{\textbackslash{}n} will be replaced by a newline
+character, \texttt{\textbackslash{}t} by a tab and so on.
+
+\section{Operators}
+For a full list of all permitted unary and binary operations, please see the
+output of \texttt{test\_unop.nm} and \texttt{test\_binop.nm} in the
+\texttt{examples} directory. Binary operators do not have a notion of
+\enquote{operator precedence}, so concatenation of operations must be made
+unambiguous by inserting braces (\texttt{()}).
+
+\paragraph{Unary minus (\texttt{-})}
+The unary minus is used to negate numerical values, i.e. \texttt{Int} and
+\texttt{Float} values. Trying to negate a value of a different type, especially
+\texttt{null} will result in \texttt{null}:
+
+\begin{lstlisting}
+println(-1);
+// -1
+
+println(-(-1));
+// 1
+
+println(-7.0);
+// -7
+
+println(-null);
+// null
+
+println(-"text");
+// null
+\end{lstlisting}
+
+\paragraph{Unary negation (\texttt{!})}
+The unary negation is used to negate boolean values. Trying to negate a value
+of a different type will result in \texttt{null}:
+
+\begin{lstlisting}
+println(!true);
+// false
+
+println(!false);
+// true
+
+println(!(!true));
+// true
+
+println(!7);
+// null
+\end{lstlisting}
+
+\paragraph{Addition (\texttt{+})}
+Addition will add two numerical values, concatenate strings and add values to
+arrays. Trying to add values of incompatible type will result in \texttt{null}:
+
+\begin{lstlisting}
+println(4 + 7.5);
+// 11.5
+
+println(["one"] + "two");
+// [one, two]
+
+println("text" + 42);
+// text42
+
+println(42 + "text");
+// null
+\end{lstlisting}
+
+\paragraph{Subtraction (\texttt{-})}
+Subtraction will subtract two numerical values or remove values from an array.
+Trying to subtract values of incompatible type will result in \texttt{null}:
+
+\begin{lstlisting}
+println(7.0 - 11);
+// -4
+
+println(["one", "two", "one", "three", "one"] - "one");
+// [two, three]
+
+println(["two", "three"] - "one");
+// [two, three]
+
+println("hello" - "world");
+// null
+\end{lstlisting}
+
+\paragraph{Multiplication (\texttt{*}), Division (\texttt{/}), Modulo
+(\texttt{\%})}
+These operators work on numerical values (\texttt{Float} and \texttt{Int}),
+with the exception of Modulo, which works on \texttt{Int} values only. Division
+by zero returns \texttt{null} as well as any operation on incompatible types.
+
+\begin{lstlisting}
+println(3 * 6.0);
+// 18
+
+println(17 / 3);
+// 5
+
+println(17 / 3.0);
+// 5.66667
+
+println(7 / 0);
+// null
+
+println(13 % 4);
+// 1
+
+println("hello" / "world");
+// null
+\end{lstlisting}
+
+\paragraph{Logical And (\texttt{\&\&}), Logical Or (\texttt{||})}
+These operators work on values of type \texttt{Bool} and \texttt{Object}. On
+the latter, they perform like set theory's \enquote{cut} and \enquote{union}
+operators.
+
+\begin{lstlisting}
+println(true && false);
+// false
+
+println(false || true);
+// true
+
+println({a: 1, b: 2} && {b: 3, c: 4});
+// {a: 1, b: 2}
+
+println({a: 1, b: 2} || {b: 3, c: 4});
+// {a: 1, b: 2, c: 4}
+\end{lstlisting}
+
+\paragraph{Equality (\texttt{==}), Inequality (\texttt{!=})}
+Check if two values are of the same type and same content. Returns
+\texttt{null}, if the two values are not of the same type, even if the types
+are related, like \texttt{Int} and \texttt{Float}. Note that if at least one
+value is \texttt{null} the result is \texttt{null}.
+
+\begin{lstlisting}
+println(1 == 2);
+// false
+
+println(2 != 3);
+// true
+
+println(1 == 1.0);
+// null
+
+println("two" == 2);
+// null
+
+println({a: 1, b: 2} == {a: 1, b: 2});
+// true
+
+println({a: 1, b: 2} == {a: 3, b: 2});
+// false
+
+println(null == null);
+// null
+\end{lstlisting}
+
+\paragraph{Less (\texttt{<}), Less or equal (\texttt{<=}), Greater
+(\texttt{>}), Greater or equal (\texttt{>=})}
+Checks if the given inequality holds true. This only works on \texttt{Int} and
+\texttt{Float} values. Returns \enquote{null} if at least one value is of any
+other type.
+
+\begin{lstlisting}
+println(1 < 4);
+// true
+
+println(2 >= 2.0);
+// true
+\end{lstlisting}
+
+\section{Built in variables and functions}
+
+\paragraph{print, println}
+These functions will print out their arguments. \texttt{println} will also
+append a line break.
+
+\begin{lstlisting}
+println("a", 1, 7.0, {foo: "bar"}, [2, 5.0, []]);
+// a17{foo: bar}[2, 5, []]
+\end{lstlisting}
+
+\paragraph{typeof}
+This function will return the type of its first argument as a \texttt{String}.
+
+\begin{lstlisting}
+println(typeof(2));
+// Int
+
+println(typeof(2.0));
+// Float
+
+println(typeof("text"));
+// String
+
+println(typeof([]));
+// Array
+\end{lstlisting}
+
+\paragraph{length}
+This function will return the length of its first argument as an \texttt{Int}.
+This is the number of characters for \texttt{String}, the number of elements
+for \texttt{Array} and \texttt{Object} and \texttt{0} otherwise, even for
+\texttt{null}.
+
+\begin{lstlisting}
+println(length("Hello world!"));
+// 12
+
+println(length([1, 2, 3, 4]));
+// 4
+
+println(length(7.0));
+// 0
+\end{lstlisting}
+
+\paragraph{range}
+This function will create an array containing all integers between the first
+argument's value (including) and the second argument's value (excluding). If
+called with less than two arguments or arguments that are not of type
+\texttt{Int} it returns \texttt{null}. If the first argument is greater than or
+equal to the second argument, an empty array is returned.
+
+\begin{lstlisting}
+println(range(5, 10));
+// [5, 6, 7, 8, 9]
+
+println(range(10, 5));
+// []
+
+println(range(1));
+// null
+\end{lstlisting}
+
+\paragraph{list}
+This function is available in interactive mode only. It lists all defined
+variables in the current context.
+
+\paragraph{arg}
+This variable contains the program's argument as an \texttt{Array} of
+\texttt{String}s.
+
+\paragraph{env}
+This variable contains an \texttt{Object} which holds the environment variables
+as they were when the program was started. Note that all elements are of type
+\texttt{String}.
+
+\paragraph{require}
+Include and execute a script. The first argument must be of type
+\texttt{String} and contain the file name of the script. Additional arguments
+are passed as the scripts \texttt{arg} variable. If the called script exits
+without a \texttt{return} statement, this function will return an empty
+\texttt{Object}, otherwise the value from the \texttt{return} statement. If the
+script was not found or failed, e. g. because of syntactical errors, the
+function returns \texttt{null}. For an example, see \texttt{require\_main.nm}
+and \texttt{require\_lib.nm} in the \texttt{examples} directory.
+
+\section{Language elements}
+\paragraph{Comments}
+Comments are the same as in C or Java.
+
+\begin{lstlisting}
+// this is a comment
+/* this is 
+a comment */
+\end{lstlisting}
+
+\paragraph{var}
+New variables are introduced with the \texttt{var} keyword. Variables need to
+have a value assigned instantly. This value and even the type of the value can
+be change later by assigning a new value to the variable. Variables are bound
+to a scope (each pair of curly brackets \texttt{\{\}}) and are available to
+inner scopes. Redefinition of a variable in the same scope is illegal, defining
+a variable with the same name of a variable of an outer scope shadows that
+variable.
+
+\begin{lstlisting}
+var i = 7;
+println(i);
+// 7
+
+/* var i = 2; ERROR */
+
+if (3 < 4) {
+    println(i);
+    // 7
+    
+    var i = 4;
+    println(i);
+    // 4
+    
+    i = i + 1;
+    println(i);
+    // 5
+}
+
+println(i);
+// 7
+\end{lstlisting}
+
+\paragraph{if, else}
+Branching works as in every other language. Note that the curly brackets for
+the positive branch are mandatory unline e. g. C / Java. If the condition is
+not of type \texttt{Bool}, it is evaluated to \texttt{false}.
+
+\begin{lstlisting}
+if (4 <= 3) {
+    println("less or equal");
+} else {
+    println("not less");
+}
+// not less
+
+var i = 7;
+if (i < 5) {
+    println("less than five!");
+} else if (i < 10) {
+    println("less than ten!");
+} else {
+    println("pretty big!");
+}
+// less than ten!
+
+if ("Hello world!") {
+    println(true);
+} else {
+    println(false);
+}
+// false
+\end{lstlisting}
+
+\paragraph{while}
+The \texttt{while} loop executes the statements in the body as long as the
+condition holds true. The condition is evaluated at the beginning of each
+iteration.
+
+\begin{lstlisting}
+var i = 5;
+
+while(i > 0) {
+    println(i);
+    i = i - 1;
+}
+// 5
+// 4
+// 3
+// 2
+// 1
+\end{lstlisting}
+
+\paragraph{for}
+The \texttt{for} loop is what would be a \enquote{for each} loop in other
+languages. It iterates over the elements of an array, the elements of an object
+or the characters of a string. With an alternate syntax, a second variable
+holds the index of the current element. Notice the use of the \texttt{range}
+function in the example.
+
+\begin{lstlisting}
+for (var index, value : range(5, 10)) {
+    println(index, " => ", value);
+}
+// 0 => 5
+// 1 => 6
+// 2 => 7
+// 3 => 8
+// 4 => 9
+
+for (var c : "hello") {
+    println(c);
+}
+// h
+// e
+// l
+// l
+// o
+
+for (var index, value : {a: 1, b: 3.0, foo: "bar", array: []}) {
+    println(index, " => ", value);
+}
+// a => 1
+// array => []
+// b => 3
+// foo => bar
+\end{lstlisting}
+
+\paragraph{return}
+Returns a value from a function (see section \enquote{Calling functions}). If
+\texttt{return} is called from the outer most scope (main program, so to
+speak), it will terminate the program. If the type of the returned value is
+\texttt{Int}, it will be used as exit code.
+
+\section{Calling functions}
+Functions are regular values in Noumenon. They can be assigned to variables
+like any other value. When a function is called, the argument values are
+assigned to the declared parameters. Excess values are discarded, missing
+parameters are assigned a value of \texttt{null}. There is no mechanism to
+create variadic functions, as an array could be used instead. If a function
+does not return a value, an implicit return value of \texttt{null} is
+substituted. Trying to \enquote{call} a value that is not of type
+\texttt{function} will return \texttt{null}.
+
+\begin{lstlisting}
+var add = function(a, b) {
+    return a + b;
+};
+
+println(add(7, 4));
+// 11
+
+println(add("hello ", "world"));
+// hello world
+
+println(add("text "));
+// text null
+
+println(add(1, 2, 3, 4));
+// 3
+\end{lstlisting}
+
+Function arguments can be considered \enquote{call by value}, with the caveat
+that containers (\texttt{Array}s and \texttt{Object}s) contain their elements
+as references and can therefor be changed. Adding or removing elements from the
+local container does not change the callers value.
+
+\begin{lstlisting}
+var array = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+var f1 = function(x) {
+    x = x + 2;
+}
+var f2 = function(x) {
+    x[0][0] = 0;
+}
+
+f1(array);
+println(array);
+// [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+f2(array);
+println(array);
+// [[0, 2, 3], [4, 5, 6], [7, 8, 9]]
+\end{lstlisting}
+
+\section{Indexing variables}
+Variables of the types \texttt{Array}, \texttt{Object} and \texttt{String} can
+be indexed. If a variable of any other type is indexed, the resulting value is
+\texttt{null}. If the index is out of range, not of type \texttt{Int}
+(\texttt{Array} and \texttt{String}) or not of type \texttt{String}
+(\texttt{Object}) the result is \texttt{null} as well.
+
+\begin{lstlisting}
+var s = "hello world";
+var a = [7, 8, 9];
+var o = {a: 1, b: 2, c: 3};
+var i = 42;
+
+println(s[4]);
+// o
+
+println(a[0]);
+// 7
+
+println(o["b"]);
+// 2
+
+println(i[0]);
+// null
+
+println(s[100]);
+null
+
+a[0] = 100;
+println(a);
+// [100, 8, 9]
+\end{lstlisting}
+\end{document}

@@ -35,7 +35,12 @@ In interactive mode, there is one more function available:
 
 To do
 -----
-* A tutorial how to program in Noumenon. 
+* Verbose mode that warns on non-boolean types in `if`-conditions etc.
+* Implement `==` and `!=` for arrays and function.
+* Explicit type casting.
+* Unicode support.
+* Character-to-Int and Int-to-Character functions like `asc` and `chr`.
+* Tutorial on how to embed Noumenon.
 * File I/O. Something like:
 ```
 var file = IO.open("output.txt", "w");
