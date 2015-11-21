@@ -61,7 +61,7 @@ public:
     /* variables defined in this scope */
     std::shared_ptr<Value> readVariable(VariableExpression&);
     void writeVariable(VariableExpression&, std::shared_ptr<Value>);
-    void insertVariable(const std::string&, std::shared_ptr<Value> value);
+    void insertVariable(const std::u32string&, std::shared_ptr<Value> value);
     Program* getParent();
 
 private:

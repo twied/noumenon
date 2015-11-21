@@ -26,7 +26,7 @@ using namespace std;
 
 namespace noumenon {
 
-static bool is_whitespace(const int& c) {
+static bool is_whitespace(const char32_t& c) {
     switch (c) {
     case ' ':
     case '\t':
@@ -40,15 +40,15 @@ static bool is_whitespace(const int& c) {
     }
 }
 
-static bool is_alpha(const int& c) {
+static bool is_alpha(const char32_t& c) {
     return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }
 
-static bool is_numeral(const int& c) {
+static bool is_numeral(const char32_t& c) {
     return c >= '0' && c <= '9';
 }
 
-static int value_hex(const int& c) {
+static int value_hex(const char32_t& c) {
     if (c >= '0' && c <= '9') {
         return c - '0';
     }
@@ -221,7 +221,7 @@ public:
         }
 
         /* end of file */
-        if (currentChar == -1) {
+        if (stream.eof()) {
             return TOKEN_EOF;
         }
 
@@ -232,25 +232,25 @@ public:
                 getChar();
             }
 
-            if (currentIdentifier == "else") {
+            if (currentIdentifier == U"else") {
                 return KEYWORD_ELSE;
-            } else if (currentIdentifier == "false") {
+            } else if (currentIdentifier == U"false") {
                 return KEYWORD_FALSE;
-            } else if (currentIdentifier == "for") {
+            } else if (currentIdentifier == U"for") {
                 return KEYWORD_FOR;
-            } else if (currentIdentifier == "function") {
+            } else if (currentIdentifier == U"function") {
                 return KEYWORD_FUNCTION;
-            } else if (currentIdentifier == "if") {
+            } else if (currentIdentifier == U"if") {
                 return KEYWORD_IF;
-            } else if (currentIdentifier == "null") {
+            } else if (currentIdentifier == U"null") {
                 return KEYWORD_NULL;
-            } else if (currentIdentifier == "return") {
+            } else if (currentIdentifier == U"return") {
                 return KEYWORD_RETURN;
-            } else if (currentIdentifier == "true") {
+            } else if (currentIdentifier == U"true") {
                 return KEYWORD_TRUE;
-            } else if (currentIdentifier == "var") {
+            } else if (currentIdentifier == U"var") {
                 return KEYWORD_VAR;
-            } else if (currentIdentifier == "while") {
+            } else if (currentIdentifier == U"while") {
                 return KEYWORD_WHILE;
             }
 
@@ -278,7 +278,7 @@ public:
             }
         }
 
-        const int lastChar = currentChar;
+        const auto lastChar = currentChar;
         getChar();
         switch (lastChar) {
         case '{':
@@ -312,7 +312,7 @@ public:
         case '/': {
             if (currentChar == '/') {
                 /* single line comment */
-                while (currentChar != -1 && currentChar != '\n' && currentChar != '\r') {
+                while (!stream.eof() && currentChar != '\n' && currentChar != '\r') {
                     getChar();
                 }
 
@@ -321,7 +321,7 @@ public:
 
             if (currentChar == '*') {
                 /* multi line comment */
-                while (currentChar != -1) {
+                while (!stream.eof()) {
                     getChar();
 
                     if (currentChar != '*') {
@@ -392,19 +392,44 @@ public:
 
     unsigned currentRow;
     unsigned currentCol;
-    string currentIdentifier;
+    u32string currentIdentifier;
 
 private:
     void getChar() {
         currentCol += 1;
 
-        const int next_char = stream.get();
+        const auto next_char = stream.get();
+
         if (next_char == '\n' || next_char == '\r') {
+            /* newline */
             currentRow += 1;
             currentCol = 0;
         }
 
-        currentChar = next_char;
+        if(next_char < 0x80) {
+            /* ascii character */
+            currentChar = next_char;
+            return;
+        }
+
+        /* unicode character */
+        string mbs;
+        mbs += next_char;
+
+
+        auto length = 4;
+        if (next_char < 0xf0) {
+            length = 3;
+        }
+        if (next_char < 0xe0) {
+            length = 2;
+        }
+
+        while(--length > 0) {
+            mbs += stream.get();
+        }
+
+        currentChar = StringValue::UTF8toUTF32(mbs)[0];
     }
 
     Token parseFloat() {
@@ -412,7 +437,7 @@ private:
             currentIdentifier += currentChar;
             getChar();
 
-            if (currentIdentifier == ".") {
+            if (currentIdentifier == U".") {
                 /* must contain at least one digit */
                 if (!is_numeral(currentChar)) {
                     return TOKEN_UNKNOWN;
@@ -464,7 +489,7 @@ private:
         while (currentChar != '\"') {
 
             /* premature EOF? */
-            if (currentChar == -1) {
+            if (stream.eof()) {
                 return TOKEN_UNKNOWN;
             }
 
@@ -528,7 +553,7 @@ private:
         return TOKEN_STRING;
     }
 
-    int currentChar;
+    char32_t currentChar;
     istream& stream;
 };
 
@@ -564,8 +589,8 @@ private:
         throw to_string(lexer.currentRow) + ":" + to_string(lexer.currentCol) + ": " + message;
     }
 
-    string parseIdentifier() {
-        string identifier = lexer.currentIdentifier;
+    u32string parseIdentifier() {
+        u32string identifier = lexer.currentIdentifier;
         eat(TOKEN_IDENTIFIER);
         return identifier;
     }
@@ -701,7 +726,7 @@ private:
         case TOKEN_INTEGER: {
             auto value = make_shared<IntExpression>();
             try {
-                value->value = stoll(lexer.currentIdentifier);
+                value->value = stoll(StringValue::UTF32toUTF8(lexer.currentIdentifier));
             } catch (const std::logic_error& e) {
                 throwException(string(e.what()));
             }
@@ -711,7 +736,7 @@ private:
         case TOKEN_FLOAT: {
             auto value = make_shared<FloatExpression>();
             try {
-                value->value = stod(lexer.currentIdentifier);
+                value->value = stod(StringValue::UTF32toUTF8(lexer.currentIdentifier));
             } catch (const std::logic_error& e) {
                 throwException(string(e.what()));
             }
@@ -758,7 +783,7 @@ private:
             auto value = make_shared<ObjectExpression>();
             eat(BRACKET_CURLY_LEFT);
             if (currentToken != BRACKET_CURLY_RIGHT) {
-                std::string key = parseIdentifier();
+                std::u32string key = parseIdentifier();
                 eat(TOKEN_COLON);
                 auto expr = parseExpression();
                 value->values[key] = expr;
@@ -911,7 +936,7 @@ private:
             node->value = parseIdentifier();
         } else {
             node->value = node->key;
-            node->key = "";
+            node->key = U"";
         }
 
         eat(TOKEN_COLON);
@@ -1152,7 +1177,7 @@ shared_ptr<Value> Program::expression(NullExpression&) {
 }
 
 shared_ptr<Value> Program::expression(ObjectExpression& node) {
-    map<string, shared_ptr<Value>> values;
+    map<u32string, shared_ptr<Value>> values;
     for (auto& pair : node.values) {
         values[pair.first] = pair.second->walk(*this);
     }
@@ -1188,7 +1213,7 @@ shared_ptr<Value> Program::readVariable(VariableExpression& variable) {
     }
 
     if (!quiet) {
-        cerr << "no such variable: \"" + variable.identifier + "\"" << endl;
+        cerr << "no such variable: \"" + StringValue::UTF32toUTF8(variable.identifier) + "\"" << endl;
     }
     return NullValue::singleton;
 }
@@ -1216,14 +1241,14 @@ void Program::writeVariable(VariableExpression& variable, shared_ptr<Value> valu
     }
 
     if (!quiet) {
-        cerr << "no such variable: \"" + variable.identifier + "\"" << endl;
+        cerr << "no such variable: \"" + StringValue::UTF32toUTF8(variable.identifier) + "\"" << endl;
     }
 }
 
-void Program::insertVariable(const string& identifier, shared_ptr<Value> value) {
+void Program::insertVariable(const u32string& identifier, shared_ptr<Value> value) {
     if (values.find(identifier) != values.end()) {
         if (!quiet) {
-            cerr << "redefinition of variable: \"" + identifier + "\"" << endl;
+            cerr << "redefinition of variable: \"" + StringValue::UTF32toUTF8(identifier) + "\"" << endl;
         }
         return;
     }

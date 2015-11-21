@@ -53,8 +53,8 @@ struct EmptyStatement : public Statement {
 };
 
 struct ForStatement : public Statement {
-    std::string key;
-    std::string value;
+    std::u32string key;
+    std::u32string value;
     std::shared_ptr<Expression> expression;
     std::vector<std::shared_ptr<Statement>> statements;
 
@@ -76,7 +76,7 @@ struct ReturnStatement : public Statement {
 };
 
 struct VarStatement : public Statement {
-    std::string identifier;
+    std::u32string identifier;
     std::shared_ptr<Expression> expression;
 
     std::shared_ptr<Value> walk(StatementWalker&);

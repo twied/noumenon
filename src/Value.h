@@ -83,11 +83,11 @@ struct FloatValue : public Value {
 };
 
 struct FunctionValue : public Value {
-    std::vector<std::string> parameters;
+    std::vector<std::u32string> parameters;
     std::vector<std::shared_ptr<Statement>> statements;
 
     FunctionValue();
-    FunctionValue(const std::vector<std::string>&, const std::vector<std::shared_ptr<Statement>>&);
+    FunctionValue(const std::vector<std::u32string>&, const std::vector<std::shared_ptr<Statement>>&);
     std::shared_ptr<Value> walk(ValueWalker&);
     virtual std::shared_ptr<Value> doBinary(const BinaryOperator&, std::shared_ptr<Value>);
     virtual std::shared_ptr<Value> doCall(Program&, std::vector<std::shared_ptr<Value>>&);
@@ -110,10 +110,10 @@ struct NullValue : public Value {
 };
 
 struct ObjectValue : public Value {
-    std::map<std::string, std::shared_ptr<Value>> values;
+    std::map<std::u32string, std::shared_ptr<Value>> values;
 
     ObjectValue();
-    ObjectValue(const std::map<std::string, std::shared_ptr<Value>>&);
+    ObjectValue(const std::map<std::u32string, std::shared_ptr<Value>>&);
     std::shared_ptr<Value> walk(ValueWalker&);
     virtual std::shared_ptr<Value> doSelect(std::shared_ptr<Value>);
     virtual std::shared_ptr<Value> doBinary(const BinaryOperator&, std::shared_ptr<Value>);
@@ -124,10 +124,13 @@ struct ObjectValue : public Value {
 };
 
 struct StringValue : public Value {
-    std::string value;
+    static std::string UTF32toUTF8(const std::u32string&);
+    static std::u32string UTF8toUTF32(const std::string&);
+
+    std::u32string value;
 
     StringValue();
-    StringValue(const std::string& value);
+    StringValue(const std::u32string& value);
     std::shared_ptr<Value> walk(ValueWalker&);
     std::shared_ptr<Value> doSelect(std::shared_ptr<Value>);
     std::shared_ptr<Value> doBinary(const BinaryOperator&, std::shared_ptr<Value>);

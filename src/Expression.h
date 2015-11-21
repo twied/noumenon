@@ -58,7 +58,7 @@ struct Expression {
 };
 
 struct VariableExpression : public Expression {
-    std::string identifier;
+    std::u32string identifier;
     std::vector<std::shared_ptr<Expression>> expressions;
 
     std::shared_ptr<Value> walk(ExpressionWalker&);
@@ -98,7 +98,7 @@ struct FloatExpression : public Expression {
 };
 
 struct FunctionExpression : public Expression {
-    std::vector<std::string> parameters;
+    std::vector<std::u32string> parameters;
     std::vector<std::shared_ptr<Statement>> statements;
 
     std::shared_ptr<Value> walk(ExpressionWalker&);
@@ -115,13 +115,13 @@ struct NullExpression : public Expression {
 };
 
 struct ObjectExpression : public Expression {
-    std::map<std::string, std::shared_ptr<Expression>> values;
+    std::map<std::u32string, std::shared_ptr<Expression>> values;
 
     std::shared_ptr<Value> walk(ExpressionWalker&);
 };
 
 struct StringExpression : public Expression {
-    std::string value;
+    std::u32string value;
 
     std::shared_ptr<Value> walk(ExpressionWalker&);
 };

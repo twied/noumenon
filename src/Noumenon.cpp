@@ -79,7 +79,7 @@ int main(int, char* argv[], char** env) {
     /* program arguments */
     const auto& arguments = make_shared<noumenon::ArrayValue>();
     for(; *argv; argv += 1) {
-        arguments->values.emplace_back(make_shared<noumenon::StringValue>(*argv));
+        arguments->values.emplace_back(make_shared<noumenon::StringValue>(noumenon::StringValue::UTF8toUTF32(*argv)));
     }
 
     const auto& environment = make_shared<noumenon::ObjectValue>();
@@ -87,23 +87,23 @@ int main(int, char* argv[], char** env) {
         const string line(*env);
         const auto& pos = line.find('=');
         if(pos != line.npos) {
-            environment->values[line.substr(0, pos)] = make_shared<noumenon::StringValue>(line.substr(pos + 1));
+            environment->values[noumenon::StringValue::UTF8toUTF32(line.substr(0, pos))] = make_shared<noumenon::StringValue>(noumenon::StringValue::UTF8toUTF32(line.substr(pos + 1)));
         }
     }
 
     noumenon::Program program(options.quiet);
-    program.insertVariable("arg", arguments);
-    program.insertVariable("env", environment);
+    program.insertVariable(U"arg", arguments);
+    program.insertVariable(U"env", environment);
 
-    program.insertVariable("typeof", make_shared<noumenon::rtl::Typeof>());
-    program.insertVariable("print", make_shared<noumenon::rtl::Print>());
-    program.insertVariable("println", make_shared<noumenon::rtl::Println>());
-    program.insertVariable("range", make_shared<noumenon::rtl::Range>());
-    program.insertVariable("length", make_shared<noumenon::rtl::Length>());
-    program.insertVariable("require", make_shared<noumenon::rtl::Require>());
+    program.insertVariable(U"typeof", make_shared<noumenon::rtl::Typeof>());
+    program.insertVariable(U"print", make_shared<noumenon::rtl::Print>());
+    program.insertVariable(U"println", make_shared<noumenon::rtl::Println>());
+    program.insertVariable(U"range", make_shared<noumenon::rtl::Range>());
+    program.insertVariable(U"length", make_shared<noumenon::rtl::Length>());
+    program.insertVariable(U"require", make_shared<noumenon::rtl::Require>());
 
     if (options.file.empty() || options.file == "--") {
-        program.insertVariable("list", make_shared<noumenon::rtl::List>());
+        program.insertVariable(U"list", make_shared<noumenon::rtl::List>());
 
         if (!options.quiet) {
             cout << "Noumenon 0.1" << endl

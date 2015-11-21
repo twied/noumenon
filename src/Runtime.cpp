@@ -62,7 +62,7 @@ struct PrintWalker : public ValueWalker {
         cout << "function(";
         auto iterator = node.parameters.begin();
         while (iterator != node.parameters.end()) {
-            cout << *iterator;
+            cout << StringValue::UTF32toUTF8(*iterator);
 
             if (++iterator != node.parameters.end()) {
                 cout << ',';
@@ -86,7 +86,7 @@ struct PrintWalker : public ValueWalker {
         cout << '{';
         auto iterator = node.values.begin();
         while (iterator != node.values.end()) {
-            cout << iterator->first << ": ";
+            cout << StringValue::UTF32toUTF8(iterator->first) << ": ";
             iterator->second->walk(*this);
 
             if (++iterator != node.values.end()) {
@@ -98,7 +98,7 @@ struct PrintWalker : public ValueWalker {
     }
 
     shared_ptr<Value> value(StringValue& node) {
-        cout << node.value;
+        cout << StringValue::UTF32toUTF8(node.value);
         return nullptr;
     }
 
@@ -108,35 +108,35 @@ private:
 
 struct TypeWalker : public ValueWalker {
     shared_ptr<Value> value(ArrayValue&) {
-        return make_shared<StringValue>("Array");
+        return make_shared<StringValue>(U"Array");
     }
 
     shared_ptr<Value> value(BoolValue&) {
-        return make_shared<StringValue>("Bool");
+        return make_shared<StringValue>(U"Bool");
     }
 
     shared_ptr<Value> value(FloatValue&) {
-        return make_shared<StringValue>("Float");
+        return make_shared<StringValue>(U"Float");
     }
 
     shared_ptr<Value> value(FunctionValue&) {
-        return make_shared<StringValue>("Function");
+        return make_shared<StringValue>(U"Function");
     }
 
     shared_ptr<Value> value(IntValue&) {
-        return make_shared<StringValue>("Int");
+        return make_shared<StringValue>(U"Int");
     }
 
     shared_ptr<Value> value(NullValue&) {
-        return make_shared<StringValue>("Null");
+        return make_shared<StringValue>(U"Null");
     }
 
     shared_ptr<Value> value(ObjectValue&) {
-        return make_shared<StringValue>("Object");
+        return make_shared<StringValue>(U"Object");
     }
 
     shared_ptr<Value> value(StringValue&) {
-        return make_shared<StringValue>("String");
+        return make_shared<StringValue>(U"String");
     }
 };
 
@@ -232,7 +232,7 @@ shared_ptr<Value> List::doCall(Program& program, vector<shared_ptr<Value>>&) {
     cout << "Variables in current scope:" << endl;
     for (Program* scope = &program; scope; scope = scope->getParent()) {
         for (auto& value : scope->values) {
-            cout << "  " << value.first << " = ";
+            cout << "  " << StringValue::UTF32toUTF8(value.first) << " = ";
             value.second->walk(walker);
             cout << endl;
         }
@@ -251,7 +251,7 @@ shared_ptr<Value> Require::doCall(Program& program, vector<shared_ptr<Value>>& p
 
         shared_ptr<Value> value(StringValue& node) {
             valid = true;
-            result = node.value;
+            result = StringValue::UTF32toUTF8(node.value);
             return nullptr;
         }
 
@@ -276,7 +276,7 @@ shared_ptr<Value> Require::doCall(Program& program, vector<shared_ptr<Value>>& p
     }
 
     Program nestedProgram(program);
-    nestedProgram.insertVariable("arg", arguments);
+    nestedProgram.insertVariable(U"arg", arguments);
     return Program::execute(nestedProgram, file);
 }
 

@@ -38,7 +38,6 @@ To do
 * Verbose mode that warns on non-boolean types in `if`-conditions etc.
 * Implement `==` and `!=` for arrays and function.
 * Explicit type casting.
-* Unicode support.
 * Character-to-Int and Int-to-Character functions like `asc` and `chr`.
 * Tutorial on how to embed Noumenon.
 * File I/O. Something like:

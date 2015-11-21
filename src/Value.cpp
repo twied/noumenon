@@ -20,6 +20,9 @@
 #include "Expression.h"
 #include "Program.h"
 
+#include <codecvt>
+#include <locale>
+
 using namespace std;
 
 namespace noumenon {
@@ -42,7 +45,7 @@ FloatValue::FloatValue(const double& value) : value(value) {
 FunctionValue::FunctionValue() : parameters(), statements() {
 }
 
-FunctionValue::FunctionValue(const std::vector<std::string>& parameters, const std::vector<std::shared_ptr<Statement>>& statements) : parameters(parameters.begin(), parameters.end()), statements(statements.begin(), statements.end()) {
+FunctionValue::FunctionValue(const std::vector<std::u32string>& parameters, const std::vector<std::shared_ptr<Statement>>& statements) : parameters(parameters.begin(), parameters.end()), statements(statements.begin(), statements.end()) {
 }
 
 IntValue::IntValue(const signed long long& value) : value(value) {
@@ -53,13 +56,23 @@ std::shared_ptr<NullValue> NullValue::singleton = make_shared<NullValue>();
 ObjectValue::ObjectValue() : values() {
 }
 
-ObjectValue::ObjectValue(const map<string, shared_ptr<Value>>& values) : values(values.begin(), values.end()) {
+ObjectValue::ObjectValue(const map<u32string, shared_ptr<Value>>& values) : values(values.begin(), values.end()) {
+}
+
+std::string StringValue::UTF32toUTF8(const std::u32string& s) {
+    std::wstring_convert<std::codecvt_utf8<char32_t>, char32_t> conv;
+    return conv.to_bytes(s);
+}
+
+std::u32string StringValue::UTF8toUTF32(const std::string& s) {
+    std::wstring_convert<codecvt_utf8<char32_t>, char32_t> conv;
+    return conv.from_bytes(s);
 }
 
 StringValue::StringValue() : value() {
 }
 
-StringValue::StringValue(const string& value) : value(value) {
+StringValue::StringValue(const u32string& value) : value(value) {
 }
 
 std::shared_ptr<Value> ArrayValue::walk(ValueWalker& walker) {
@@ -148,7 +161,7 @@ shared_ptr<Value> StringValue::doSelect(shared_ptr<Value> value) {
 
         shared_ptr<Value> value(IntValue& node) {
             if (node.value >= 0 && (unsigned long long) node.value < stringValue.value.size()) {
-                return make_shared<StringValue>(string(1, stringValue.value[node.value]));
+                return make_shared<StringValue>(u32string(1, stringValue.value[node.value]));
             }
             return NullValue::singleton;
         }
@@ -481,49 +494,49 @@ shared_ptr<Value> StringValue::doBinary(const BinaryOperator& oper, shared_ptr<V
 
         shared_ptr<Value> value(ArrayValue&) {
             if (oper == BinaryOperator::ADD) {
-                return make_shared<StringValue>(lhs.value + "Array");
+                return make_shared<StringValue>(lhs.value + U"Array");
             }
             return NullValue::singleton;
         }
 
         shared_ptr<Value> value(BoolValue& rhs) {
             if (oper == BinaryOperator::ADD) {
-                return make_shared<StringValue>(lhs.value + (rhs.value ? "true" : "false"));
+                return make_shared<StringValue>(lhs.value + (rhs.value ? U"true" : U"false"));
             }
             return NullValue::singleton;
         }
 
         shared_ptr<Value> value(FloatValue& rhs) {
             if (oper == BinaryOperator::ADD) {
-                return make_shared<StringValue>(lhs.value + to_string(rhs.value));
+                return make_shared<StringValue>(lhs.value + StringValue::UTF8toUTF32(to_string(rhs.value)));
             }
             return NullValue::singleton;
         }
 
         shared_ptr<Value> value(FunctionValue&) {
             if (oper == BinaryOperator::ADD) {
-                return make_shared<StringValue>(lhs.value + "Function");
+                return make_shared<StringValue>(lhs.value + U"Function");
             }
             return NullValue::singleton;
         }
 
         shared_ptr<Value> value(IntValue& rhs) {
             if (oper == BinaryOperator::ADD) {
-                return make_shared<StringValue>(lhs.value + to_string(rhs.value));
+                return make_shared<StringValue>(lhs.value + StringValue::UTF8toUTF32(to_string(rhs.value)));
             }
             return NullValue::singleton;
         }
 
         shared_ptr<Value> value(NullValue&) {
             if (oper == BinaryOperator::ADD) {
-                return make_shared<StringValue>(lhs.value + "null");
+                return make_shared<StringValue>(lhs.value + U"null");
             }
             return NullValue::singleton;
         }
 
         shared_ptr<Value> value(ObjectValue&) {
             if (oper == BinaryOperator::ADD) {
-                return make_shared<StringValue>(lhs.value + "Object");
+                return make_shared<StringValue>(lhs.value + U"Object");
             }
             return NullValue::singleton;
         }
@@ -665,7 +678,7 @@ shared_ptr<Value> ObjectValue::getValue(const unsigned long long& index) {
 
 shared_ptr<Value> StringValue::getValue(const unsigned long long& index) {
     if (index < value.size()) {
-        return make_shared<StringValue>(string(1, value[index]));
+        return make_shared<StringValue>(u32string(1, value[index]));
     }
 
     return NullValue::singleton;
